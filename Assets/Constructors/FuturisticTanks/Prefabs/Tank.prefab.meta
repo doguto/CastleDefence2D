@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 506e68302986f92478ca2628475caa68
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 223661
+  packageName: Futuristic Tanks Builder & Animation
+  packageVersion: 1.0
+  assetPath: Assets/Constructors/FuturisticTanks/Prefabs/Tank.prefab
+  uploadId: 505573

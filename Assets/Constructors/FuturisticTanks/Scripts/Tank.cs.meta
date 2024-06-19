@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5b0c9340f5529454b893aaf441ad27f8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 223661
+  packageName: Futuristic Tanks Builder & Animation
+  packageVersion: 1.0
+  assetPath: Assets/Constructors/FuturisticTanks/Scripts/Tank.cs
+  uploadId: 505573
