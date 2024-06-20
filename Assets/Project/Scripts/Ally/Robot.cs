@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Robot : Ally
 {
-    [SerializeField] int hp;
+
 }

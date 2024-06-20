@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int hp;
+    public Ally engagingAlly;
+    public AllyHpManager engagingAllyCollision;
 
     private bool movable = true; //“®ì‰Â”\«Ši”[•Ï”
     public bool Movable
