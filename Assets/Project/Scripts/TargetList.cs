@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class TargetList : MonoBehaviour
 {
-    [SerializeField] public List<Robot> robots = new List<Robot>();
+    [SerializeField] public List<Soldier> robots = new List<Soldier>();
     [SerializeField] public Gate gate;
 }

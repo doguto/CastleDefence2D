@@ -36,7 +36,7 @@ public class NormalEnemyAttack : EnemyAttack
         Vector3 preRotation = enemyTransform.eulerAngles;
         Vector3 postRotation = preRotation + attackRotation;
         enemyTransform.eulerAngles = postRotation;
-        enemy.engagingAllyCollision.CallDamaged(power);
+        enemy.EngagingAllyDamage.CallDamaged(power);
         yield return attackingDeray;
         enemyTransform.eulerAngles = preRotation;
         StartCoroutine(AttackWait());

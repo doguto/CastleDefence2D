@@ -5,8 +5,27 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int hp;
-    public Ally engagingAlly;
-    public AllyHpManager engagingAllyCollision;
+    Ally engagingAlly;
+    public Ally EngagingAlly
+    {
+        get { return engagingAlly; }
+        set 
+        {
+            if (value == null) return;
+            engagingAlly = value;
+        }
+    }
+
+    AllyDamage engagingAllyDamage;
+    public AllyDamage EngagingAllyDamage
+    {
+        get { return engagingAllyDamage; }
+        set 
+        {
+            if (value == null) return;
+            engagingAllyDamage = value;
+        }
+    }
 
     private bool movable = true; //“®ì‰Â”\«Ši”[•Ï”
     public bool Movable

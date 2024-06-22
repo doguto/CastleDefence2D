@@ -18,7 +18,7 @@ public class TargetSetter_Normal : MonoBehaviour
         float finalDistance = 0;
         float minDistance = 0;
 
-        foreach (Robot robot in targetList.robots)
+        foreach (Soldier robot in targetList.robots)
         {
             tempDistance = (enemyTransform.position - robot.transform.position).sqrMagnitude;
             if (minDistance == 0)

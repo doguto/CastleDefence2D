@@ -7,11 +7,12 @@ TagManager:
   - Gate
   - Robot
   - Enemy
+  - Soldier
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Entity
   - Water
   - UI
   - 
@@ -41,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 551015173
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 177956321
     locked: 0

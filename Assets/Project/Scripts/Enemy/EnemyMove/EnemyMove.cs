@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyMove : MonoBehaviour　//EnemyMove抽象クラス
 {
-    [SerializeField] protected Enemy enemy;
-
+    [SerializeField] protected Enemy enemy; //本Enemy格納変数
     [SerializeField] protected float speed; //移動速度定義変数
     [SerializeField] protected Transform enemyTransform; //Transform格納変数
     protected Vector2 nextEnemyPosition = new Vector2(0,0); //仮移動先格納ベクトル

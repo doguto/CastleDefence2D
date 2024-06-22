@@ -16,10 +16,10 @@ public class Ally : MonoBehaviour
         }
     }
 
-    [SerializeField] int duration;
+    [SerializeField] int durability;
     public int Duration
     {
-        get { return duration; }
+        get { return durability; }
     }
 
     bool canDamaged = true;

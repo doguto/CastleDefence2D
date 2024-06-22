@@ -6,19 +6,24 @@ public class NormalEnemyCollision : EnemyCollision
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag != robotTag && collision.gameObject.tag != gateTag) return;
+        if (enemy.IsEngage) return;
+        if (enemy.EngagingAlly) return;
+
+        string collisionTag = collision.gameObject.tag;
+        if (collisionTag != soldierTag && tag != gateTag) return;
 
         enemy.IsEngage = true;
-        enemy.engagingAlly = collision.gameObject.GetComponent<Ally>();
-        enemy.engagingAllyCollision = collision.gameObject.GetComponent<AllyHpManager>();
+        enemy.EngagingAlly = collision.gameObject.GetComponent<Ally>();
+        enemy.EngagingAllyDamage = collision.gameObject.GetComponent<AllyDamage>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != robotTag && collision.gameObject.tag != gateTag) return;
+        string collisionTag = collision.gameObject.tag;
+        if (collisionTag != soldierTag && tag != gateTag) return;
 
         enemy.IsEngage = false;
-        enemy.engagingAlly = null;
-        enemy.engagingAllyCollision = null;
+        enemy.EngagingAlly = null;
+        enemy.EngagingAllyDamage = null;
     }
 }
