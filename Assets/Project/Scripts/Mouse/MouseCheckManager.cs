@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IClicked
+public class MouseCheckManager : MonoBehaviour
 {
-    void OnClicked();
+
 }

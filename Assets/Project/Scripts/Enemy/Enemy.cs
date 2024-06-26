@@ -27,18 +27,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool movable = true; //“®ì‰Â”\«Ši”[•Ï”
-    public bool Movable
+    private bool canMove = true; //“®ì‰Â”\«Ši”[•Ï”
+    public bool CanMove
     {
-        get { return movable; }
-        set { movable = value; }
+        get { return canMove; }
+        set { canMove = value; }
     }
 
-    private bool attackable = true; //UŒ‚‰Â”\«Ši”[•Ï”
-    public bool Attackable
+    private bool canAttack = true; //UŒ‚‰Â”\«Ši”[•Ï”
+    public bool CanAttack
     {
-        get { return attackable; }
-        set { attackable = value; }
+        get { return canAttack; }
+        set { canAttack = value; }
     }
 
     private bool isEngage = false; //Ú“G’†iUŒ‚’†j 

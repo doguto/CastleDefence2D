@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IClicked
+public abstract class AllyCollision : Collision
 {
-    void OnClicked();
+    [SerializeField] Ally ally;
 }

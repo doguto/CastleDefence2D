@@ -24,10 +24,10 @@ public class NormalEnemyAttack : EnemyAttack
 
     protected override void Attack()
     {
-        if (!enemy.Attackable) return;
+        if (!enemy.CanAttack) return;
         if (!enemy.IsEngage) return;
 
-        enemy.Attackable = false;
+        enemy.CanAttack = false;
         StartCoroutine(AttackingCoroutin());
     }
 
@@ -45,6 +45,6 @@ public class NormalEnemyAttack : EnemyAttack
     protected override IEnumerator AttackWait()
     {
         yield return attackDeray;
-        enemy.Attackable = true;
+        enemy.CanAttack = true;
     }
 }

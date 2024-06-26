@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyCollision : MonoBehaviour
+public abstract class EnemyCollision : Collision
 {
     [SerializeField] protected Enemy enemy;
-
-    readonly protected string robotTag = "Robot";
-    readonly protected string soldierTag = "Soldier";
-    readonly protected string gateTag = "Gate";
 }
