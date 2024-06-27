@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TargetEnemies : MonoBehaviour
 {
-    List<Enemy> targetEnemies;
+    [SerializeField] List<Enemy> targetEnemies;
 
     private void Awake()
     {
-        targetEnemies = new List<Enemy>();
+        //targetEnemies = new List<Enemy>();
     }
 
     public void AddTarget(Enemy enemy)

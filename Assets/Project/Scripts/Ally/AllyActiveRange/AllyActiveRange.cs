@@ -6,7 +6,7 @@ public abstract class AllyActiveRange : MonoBehaviour
 {
     [SerializeField] protected TargetEnemies targetEnemies;
     [SerializeField] protected Soldier soldier;
-    [SerializeField] protected Vector2 centerPosition;
+    protected Vector2 centerPosition;
     [SerializeField] protected float width;
 
     readonly protected string enemyTag = "Enemy";

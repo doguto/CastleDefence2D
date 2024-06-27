@@ -5,6 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int hp;
+    public int Hp
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
+
     Ally engagingAlly;
     public Ally EngagingAlly
     {
@@ -16,13 +22,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    int duration;
+    public int Duration
+    {
+        get { return duration; }
+    }
+
+
     AllyDamage engagingAllyDamage;
     public AllyDamage EngagingAllyDamage
     {
         get { return engagingAllyDamage; }
         set 
         {
-            if (value == null) return;
+            if (!value) return;
             engagingAllyDamage = value;
         }
     }
@@ -39,6 +52,13 @@ public class Enemy : MonoBehaviour
     {
         get { return canAttack; }
         set { canAttack = value; }
+    }
+
+    private bool canDamaged; //”í’e‰Â”\«Ši”[•Ï”
+    public bool CanDamaged
+    {
+        get { return canDamaged; }
+        set { canDamaged = value; }
     }
 
     private bool isEngage = false; //Ú“G’†iUŒ‚’†j 

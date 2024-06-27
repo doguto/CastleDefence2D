@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  myTransform: {fileID: 0}
+  myTransform: {fileID: 683176474}
   enemy: {fileID: 95183032}
   targetSetter: {fileID: 144845080}
 --- !u!114 &95183032
@@ -1133,6 +1133,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 683176477}
+    - targetCorrespondingSourceObject: {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 683176480}
   m_SourcePrefab: {fileID: 100100000, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
 --- !u!4 &683176474 stripped
 Transform:
@@ -1207,6 +1210,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0.05, y: 0}
   m_Size: {x: 0.9, y: 0.7}
   m_Direction: 1
+--- !u!114 &683176480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95183025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e225ea14dacc94e9424215f548410d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 95183032}
+  spriteRenderer: {fileID: 1475112882}
+  damagedEffectLength: 0.1
 --- !u!1 &714732028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,19 +1861,25 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1514721741}
-    - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1514721742}
     - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1514721746}
     - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1514721741}
+    - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1514721744}
     - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1514721745}
+    - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1514721747}
+    - targetCorrespondingSourceObject: {fileID: 1824416424260298, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1514721748}
   m_SourcePrefab: {fileID: 100100000, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
 --- !u!4 &1075526800 stripped
 Transform:
@@ -2474,6 +2498,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1107472097}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1475112882 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8455283661403818387, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
+  m_PrefabInstance: {fileID: 683176473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1500545167 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 212200432358254422, guid: 79639b84e20f0ea4694165c0d4554387, type: 3}
@@ -2678,7 +2707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  myTransform: {fileID: 0}
+  myTransform: {fileID: 1075526800}
   soldier: {fileID: 1514721741}
 --- !u!50 &1514721746
 Rigidbody2D:
@@ -2707,6 +2736,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1514721747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514721739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521dbe218704d9e4bb9dc4ac1e9e2ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldier: {fileID: 1514721741}
+--- !u!114 &1514721748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514721739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4923e6c819afa55498297d9bd8b07f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEnemies: {fileID: 1532122375}
+  soldier: {fileID: 1514721741}
+  width: 3
 --- !u!1 &1532122373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,6 +2808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bed1299ae0da449a3eaa471c5629e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetEnemies:
+  - {fileID: 95183032}
 --- !u!1 &1601287897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,7 +3452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4923e6c819afa55498297d9bd8b07f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetEnemies: {fileID: 0}
   soldier: {fileID: 1514721741}
+  width: 0
 --- !u!1 &1851396446
 GameObject:
   m_ObjectHideFlags: 0

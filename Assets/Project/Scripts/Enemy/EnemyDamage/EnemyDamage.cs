@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AllyDamage : Damage
+public abstract class EnemyDamage : Damage
 {
-    [SerializeField] protected Ally ally;
-    [SerializeField] protected SpriteRenderer[] spriteRenderers;
+    [SerializeField] protected Enemy enemy;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected float damagedEffectLength;
     protected WaitForSeconds damagedEffectDeray;
 
@@ -18,18 +18,13 @@ public abstract class AllyDamage : Damage
     //ダメージ量計算関数
     protected abstract int DamageAmount(int power, int duration);
 
-    protected IEnumerator DamagedEffect()
+    //赤く一度点滅させる関数
+    protected IEnumerator DamagedEffect() 
     {
-        foreach (SpriteRenderer sprite in spriteRenderers)
-        {
-            sprite.material.color = damagedColor;
-        }
+        spriteRenderer.material.color = damagedColor;
 
         yield return damagedEffectDeray;
 
-        foreach (SpriteRenderer sprite in spriteRenderers)
-        {
-            sprite.material.color = Color.white;
-        }
+        spriteRenderer.material.color = Color.white;
     }
 }

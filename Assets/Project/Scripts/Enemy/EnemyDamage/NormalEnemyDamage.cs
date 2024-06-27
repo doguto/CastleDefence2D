@@ -2,32 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalSoldierDamage : AllyDamage
+public class NormalEnemyDamage : EnemyDamage
 {
-
-    private void Awake()
-    {
-        damagedEffectDeray = new WaitForSeconds(damagedEffectLength);
-    }
-
     public override void CallDamaged(int power)
     {
-        if (!ally.CanDamaged) return;
         if (power <= 0) return;
+        if (!enemy.CanDamaged) return;
 
-        Damaged(DamageAmount(power, ally.Duration));
+        Damaged(DamageAmount(power, enemy.Duration));
     }
+
 
     protected override void Damaged(int damage)
     {
-        if (ally.Hp - damage <= 0)
+        if (enemy.Hp - damage <= 0)
         {
-            ally.Hp = 0;
+            enemy.Hp = 0;
             //Death();
         }
-        ally.Hp -= damage;
+        enemy.Hp -= damage;
         StartCoroutine(DamagedEffect());
     }
+
 
     protected override int DamageAmount(int power, int duration)
     {

@@ -15,6 +15,28 @@ public class Soldier : Ally
         }
     }
 
+    Enemy engagingEnemy; //Œ»İÚ“G’†‚ÌEnemy
+    public Enemy EngagingEnemy
+    {
+        get { return engagingEnemy; }
+        set
+        {
+            if (!value) return;
+            engagingEnemy = value;
+        }
+    }
+
+    EnemyDamage engagingEnemyDamage; //Œ»İÚ“G’†‚ÌEnemy‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é—p
+    public EnemyDamage EngagingEnemyDamage
+    {
+        get { return engagingEnemyDamage; }
+        set
+        {
+            if (!value) return;
+            engagingEnemyDamage = value;
+        }
+    }
+
     bool canMove; //“®ì‰Â”\«Ši”[•Ï”
     public bool CanMove
     {
