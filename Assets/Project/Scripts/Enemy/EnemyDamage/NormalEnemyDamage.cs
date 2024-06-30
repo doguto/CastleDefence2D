@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NormalEnemyDamage : EnemyDamage
 {
+    private void Start()
+    {
+        enemy.CanDamaged = true;
+    }
+
     public override void CallDamaged(int power)
     {
         if (power <= 0) return;

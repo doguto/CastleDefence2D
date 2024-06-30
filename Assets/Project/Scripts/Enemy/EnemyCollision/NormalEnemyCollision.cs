@@ -21,6 +21,8 @@ public class NormalEnemyCollision : EnemyCollision
     {
         string collisionTag = collision.gameObject.tag;
         if (collisionTag != soldierTag && tag != gateTag) return;
+        if (enemy.EngagingAlly) return;
+        if (collisionTag != enemy.EngagingAlly.gameObject.tag) return;
 
         enemy.IsEngage = false;
         enemy.EngagingAlly = null;

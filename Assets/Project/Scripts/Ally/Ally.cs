@@ -28,4 +28,11 @@ public class Ally : MonoBehaviour
         get { return canDamaged; }
         set { canDamaged = value; }
     }
+
+    bool canAttack;
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
 }

@@ -7,7 +7,6 @@ public class LandSoldierActiveRange : AllyActiveRange
     private void FixedUpdate()
     {
         TargetSetter(centerPosition, width);
-        Debug.Log(soldier.TargetEnemy);
     }
 
     protected override void TargetSetter(Vector2 centerPosition, float width)

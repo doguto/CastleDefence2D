@@ -9,6 +9,10 @@ public abstract class EnemyDamage : Damage
     [SerializeField] protected float damagedEffectLength;
     protected WaitForSeconds damagedEffectDeray;
 
+    protected void Awake()
+    {
+        damagedEffectDeray = new WaitForSeconds(damagedEffectLength);
+    }
     //ダメージ処理受付関数
     public abstract void CallDamaged(int power);
 
