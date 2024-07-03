@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EnemyDamage : Damage
 {
     [SerializeField] protected Enemy enemy;
+    [SerializeField] protected EnemyDeath enemyDeath;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected float damagedEffectLength;
     protected WaitForSeconds damagedEffectDeray;
@@ -20,7 +21,14 @@ public abstract class EnemyDamage : Damage
     protected abstract void Damaged(int damage);
 
     //ダメージ量計算関数
-    protected abstract int DamageAmount(int power, int duration);
+    protected int DamageAmount(int power, int duration)
+    {
+        if (power - duration < 0)
+        {
+            return 0;
+        }
+        return power - duration;
+    }
 
     //赤く一度点滅させる関数
     protected IEnumerator DamagedEffect() 

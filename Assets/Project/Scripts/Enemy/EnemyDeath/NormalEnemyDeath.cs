@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalSoldierDeath : AllyDeath
+public class NormalEnemyDeath : EnemyDeath
 {
     public override void CallDeath()
     {

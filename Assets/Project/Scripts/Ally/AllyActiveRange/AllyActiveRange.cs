@@ -24,5 +24,6 @@ public abstract class AllyActiveRange : MonoBehaviour
     protected void Awake()
     {
         this.transform.parent = null;
+        centerPosition = transform.position;
     }
 }
