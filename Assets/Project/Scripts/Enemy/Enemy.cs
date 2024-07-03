@@ -5,19 +5,60 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] int hp;
-
-    private bool movable = true; //“®ì‰Â”\«Ši”[•Ï”
-    public bool Movable
+    public int Hp
     {
-        get { return movable; }
-        set { movable = value; }
+        get { return hp; }
+        set { hp = value; }
     }
 
-    private bool attackable = true; //UŒ‚‰Â”\«Ši”[•Ï”
-    public bool Attackable
+    Ally engagingAlly;
+    public Ally EngagingAlly
     {
-        get { return attackable; }
-        set { attackable = value; }
+        get { return engagingAlly; }
+        set 
+        {
+            if (value == null) return;
+            engagingAlly = value;
+        }
+    }
+
+    int duration;
+    public int Duration
+    {
+        get { return duration; }
+    }
+
+
+    AllyDamage engagingAllyDamage;
+    public AllyDamage EngagingAllyDamage
+    {
+        get { return engagingAllyDamage; }
+        set 
+        {
+            if (!value) return;
+            engagingAllyDamage = value;
+        }
+    }
+
+    private bool canMove = true; //“®ì‰Â”\«Ši”[•Ï”
+    public bool CanMove
+    {
+        get { return canMove; }
+        set { canMove = value; }
+    }
+
+    private bool canAttack = true; //UŒ‚‰Â”\«Ši”[•Ï”
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
+
+    private bool canDamaged; //”í’e‰Â”\«Ši”[•Ï”
+    public bool CanDamaged
+    {
+        get { return canDamaged; }
+        set { canDamaged = value; }
     }
 
     private bool isEngage = false; //Ú“G’†iUŒ‚’†j 

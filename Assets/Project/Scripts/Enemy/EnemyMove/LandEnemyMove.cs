@@ -9,7 +9,7 @@ public class LandEnemyMove : EnemyMove
 
     private void Awake()
     {
-        enemy.Movable = true;
+        enemy.CanMove = true;
         enemy.IsEngage = false;
     }
     private void Update()
@@ -19,25 +19,25 @@ public class LandEnemyMove : EnemyMove
 
     public override void Move()
     {
-        if (!enemy.Movable) return;
+        if (!enemy.CanMove) return;
         if (enemy.IsEngage) return;
 
-        nextEnemyPosition = enemyTransform.position;
-        tempTarget = targetSetter.SetTarget(enemyTransform);
-        if (enemyTransform.position.x - tempTarget.transform.position.x > 0)
+        nextPosition = myTransform.position;
+        tempTarget = targetSetter.SetTarget(myTransform);
+        if (myTransform.position.x - tempTarget.transform.position.x > 0)
         {
-            nextEnemyPosition.x -= speed * Time.deltaTime;
-            if (nextEnemyPosition.x < tempTarget.transform.position.x) return;
+            nextPosition.x -= speed * Time.deltaTime;
+            if (nextPosition.x < tempTarget.transform.position.x) return;
             nextEulerAngle = leftEulerAngle;
         }
         else
         {
-            nextEnemyPosition.x += speed * Time.deltaTime;
-            if (nextEnemyPosition.x > tempTarget.transform.position.x) return;
+            nextPosition.x += speed * Time.deltaTime;
+            if (nextPosition.x > tempTarget.transform.position.x) return;
             nextEulerAngle = rightEulerAngle;
         }
 
-        enemyTransform.eulerAngles = nextEulerAngle;
-        enemyTransform.position = nextEnemyPosition;
+        myTransform.eulerAngles = nextEulerAngle;
+        myTransform.position = nextPosition;
     }
 }

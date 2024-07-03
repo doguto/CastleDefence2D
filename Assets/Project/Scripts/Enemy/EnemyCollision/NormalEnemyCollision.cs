@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class NormalEnemyCollision : EnemyCollision
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != robotTag && collision.gameObject.tag != gateTag) return;
+        if (enemy.IsEngage) return;
+        if (enemy.EngagingAlly) return;
+
+        string collisionTag = collision.gameObject.tag;
+        if (collisionTag != soldierTag && tag != gateTag) return;
 
         enemy.IsEngage = true;
-        engagingAlly = collision.gameObject.GetComponent<Ally>();
+        enemy.EngagingAlly = collision.gameObject.GetComponent<Ally>();
+        enemy.EngagingAllyDamage = collision.gameObject.GetComponent<AllyDamage>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != robotTag && collision.gameObject.tag != gateTag) return;
+        string collisionTag = collision.gameObject.tag;
+        if (collisionTag != soldierTag && tag != gateTag) return;
+        if (enemy.EngagingAlly) return;
+        if (collisionTag != enemy.EngagingAlly.gameObject.tag) return;
 
         enemy.IsEngage = false;
-        engagingAlly = null;
+        enemy.EngagingAlly = null;
+        enemy.EngagingAllyDamage = null;
     }
 }
