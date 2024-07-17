@@ -26,6 +26,12 @@ public class SordAttack : AllyAttack
 
         if (!soldier.CanAttack) return;
         if (!soldier.IsEngage) return;
+        if (!soldier.EngagingEnemy)
+        {
+            soldier.IsEngage = false;
+            soldier.CanMove = true;
+            return;
+        }
 
         soldier.CanAttack = false;
         StartCoroutine(Slach());
@@ -40,22 +46,25 @@ public class SordAttack : AllyAttack
     IEnumerator Slach()
     {
         Vector3 preRotation = soldierTransform.eulerAngles;
-        Vector3 postRotation;
-        if (soldierTransform.eulerAngles.y == 0)
-        {
-            postRotation = preRotation - slashRotateAdd;
-        }
-        else
-        {
-            postRotation = preRotation + slashRotateAdd;
-        }
-        soldierTransform.eulerAngles = postRotation;
+        soldierTransform.eulerAngles = SlashRotate(preRotation);
         soldier.EngagingEnemyDamage.CallDamaged(power);
 
         yield return slashedDeray;
 
         soldierTransform.eulerAngles = preRotation;
         StartCoroutine(AttackWait());
+    }
+
+
+    //HelperMethod
+
+    Vector3 SlashRotate(Vector3 preRotation)
+    {
+        if (soldierTransform.eulerAngles.y == 0)
+        {
+            return preRotation - slashRotateAdd;
+        }
+        return preRotation + slashRotateAdd;
     }
 }
 

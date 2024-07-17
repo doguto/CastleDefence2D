@@ -23,7 +23,7 @@ public class NormalSoldierDamage : AllyDamage
         if (ally.Hp - damage <= 0)
         {
             ally.Hp = 0;
-            //Death();
+            allyDeath.CallDeath();
         }
         ally.Hp -= damage;
         StartCoroutine(DamagedEffect());

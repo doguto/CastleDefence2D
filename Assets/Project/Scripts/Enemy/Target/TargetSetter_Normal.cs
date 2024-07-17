@@ -6,14 +6,14 @@ public class TargetSetter_Normal : MonoBehaviour
 {
     [SerializeField] TargetList targetList;
 
-    public Ally SetTarget(Transform enemyTransform)
+    public AllyBase SetTarget(Transform enemyTransform)
     {
         if (targetList.robots == null)
         {
             return targetList.gate;
         }
 
-        Ally target = null;
+        AllyBase target = null;
         float tempDistance = 0;
         float finalDistance = 0;
         float minDistance = 0;

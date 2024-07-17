@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalEnemyCollision : EnemyCollision
+public class NormalEnemyCollision : EnemyCollisionBase
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,17 +10,17 @@ public class NormalEnemyCollision : EnemyCollision
         if (enemy.EngagingAlly) return;
 
         string collisionTag = collision.gameObject.tag;
-        if (collisionTag != soldierTag && tag != gateTag) return;
+        if (collisionTag != soldierTag && collisionTag != gateTag) return;
 
         enemy.IsEngage = true;
-        enemy.EngagingAlly = collision.gameObject.GetComponent<Ally>();
+        enemy.EngagingAlly = collision.gameObject.GetComponent<AllyBase>();
         enemy.EngagingAllyDamage = collision.gameObject.GetComponent<AllyDamage>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         string collisionTag = collision.gameObject.tag;
-        if (collisionTag != soldierTag && tag != gateTag) return;
+        if (collisionTag != soldierTag && collisionTag != gateTag) return;
         if (enemy.EngagingAlly) return;
         if (collisionTag != enemy.EngagingAlly.gameObject.tag) return;
 

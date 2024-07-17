@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyDamage : Damage
+public abstract class EnemyDamage : DamageBase
 {
     [SerializeField] protected Enemy enemy;
     [SerializeField] protected EnemyDeath enemyDeath;

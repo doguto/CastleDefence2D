@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier : Ally
+public class Soldier : AllyBase
 {
     Enemy targetEnemy; //–Ú•WEnemyŠi”[•Ï”
     public Enemy TargetEnemy
@@ -49,5 +49,11 @@ public class Soldier : Ally
     {
         get { return isEngage; }
         set { isEngage = value; }
+    }
+
+
+    private void Awake()
+    {
+        UnitList.AddUnit<Soldier>(this);
     }
 }

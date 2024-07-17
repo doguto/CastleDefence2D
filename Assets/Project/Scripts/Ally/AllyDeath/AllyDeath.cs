@@ -6,5 +6,5 @@ public abstract class AllyDeath : Death
 {
     public abstract void CallDeath();
 
-    protected abstract IEnumerator Death();
+    protected abstract void Die();
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AllyActiveRange : MonoBehaviour
 {
-    [SerializeField] protected TargetEnemies targetEnemies;
+    //[SerializeField] protected TargetEnemies targetEnemies;
     [SerializeField] protected Soldier soldier;
     protected Vector2 centerPosition;
     [SerializeField] protected float width;
@@ -17,7 +17,7 @@ public abstract class AllyActiveRange : MonoBehaviour
     {
         if (!enemy) return false;
 
-        if (targetEnemies.ContainTarget(enemy)) return true;
+        if (UnitList.ContainUnit<Enemy>(enemy)) return true;
         return false;
     }
 

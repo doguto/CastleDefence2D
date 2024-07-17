@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SoldierMove : Move
+public abstract class SoldierMove : MoveBase
 {
     [SerializeField] protected Soldier soldier; //–{‘ÌAllyŠi”[”z—ñ
     protected Vector3 centerPosition;

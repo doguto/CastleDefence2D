@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   durability: 5
+  guardAmount: 2
 --- !u!114 &1566556917550889329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4923e6c819afa55498297d9bd8b07f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEnemies: {fileID: 0}
   soldier: {fileID: 6346902905927047091}
   width: 5
 --- !u!114 &6580218590094144826

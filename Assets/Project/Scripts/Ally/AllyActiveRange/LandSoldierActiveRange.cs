@@ -15,7 +15,7 @@ public class LandSoldierActiveRange : AllyActiveRange
         if (width == 0) return;
         if (soldier.TargetEnemy) return;
 
-        Enemy tempTarget = targetEnemies.GetTargetEnemy(centerPosition, width);
+        Enemy tempTarget = UnitList.GetTargetEnemy(centerPosition, width);
 
         if (!tempTarget) return;
 

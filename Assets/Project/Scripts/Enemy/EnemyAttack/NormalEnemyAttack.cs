@@ -26,6 +26,12 @@ public class NormalEnemyAttack : EnemyAttack
     {
         if (!enemy.CanAttack) return;
         if (!enemy.IsEngage) return;
+        if (!enemy.EngagingAlly)
+        {
+            enemy.IsEngage = false;
+            enemy.CanMove = true;
+            return;
+        }
 
         enemy.CanAttack = false;
         StartCoroutine(AttackingCoroutin());

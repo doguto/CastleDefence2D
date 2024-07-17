@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandEnemyMove : EnemyMove
+public class LandEnemyMove : EnemyMoveBase
 {
-    [SerializeField] TargetSetter_Normal targetSetter;
-    Ally tempTarget;
+    AllyBase target;
 
     private void Awake()
     {
         enemy.CanMove = true;
         enemy.IsEngage = false;
     }
+
+    private void Start()
+    {
+        target = UnitList.SetGate();
+    }
+
     private void Update()
     {
         Move();
@@ -23,17 +28,16 @@ public class LandEnemyMove : EnemyMove
         if (enemy.IsEngage) return;
 
         nextPosition = myTransform.position;
-        tempTarget = targetSetter.SetTarget(myTransform);
-        if (myTransform.position.x - tempTarget.transform.position.x > 0)
+        if (myTransform.position.x - target.transform.position.x > 0)
         {
             nextPosition.x -= speed * Time.deltaTime;
-            if (nextPosition.x < tempTarget.transform.position.x) return;
+            if (nextPosition.x < target.transform.position.x) return;
             nextEulerAngle = leftEulerAngle;
         }
         else
         {
             nextPosition.x += speed * Time.deltaTime;
-            if (nextPosition.x > tempTarget.transform.position.x) return;
+            if (nextPosition.x > target.transform.position.x) return;
             nextEulerAngle = rightEulerAngle;
         }
 

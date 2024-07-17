@@ -11,15 +11,11 @@ public class Enemy : MonoBehaviour
         set { hp = value; }
     }
 
-    Ally engagingAlly;
-    public Ally EngagingAlly
+    AllyBase engagingAlly;
+    public AllyBase EngagingAlly
     {
         get { return engagingAlly; }
-        set 
-        {
-            if (value == null) return;
-            engagingAlly = value;
-        }
+        set { engagingAlly = value; }
     }
 
     int duration;
@@ -28,16 +24,11 @@ public class Enemy : MonoBehaviour
         get { return duration; }
     }
 
-
     AllyDamage engagingAllyDamage;
     public AllyDamage EngagingAllyDamage
     {
         get { return engagingAllyDamage; }
-        set 
-        {
-            if (!value) return;
-            engagingAllyDamage = value;
-        }
+        set { engagingAllyDamage = value; }
     }
 
     private bool canMove = true; //ìÆçÏâ¬î\ê´äiî[ïœêî
@@ -65,6 +56,18 @@ public class Enemy : MonoBehaviour
     public bool IsEngage
     {
         get { return isEngage; }
-        set { isEngage = value; }
+        set
+        { 
+            if (value)
+            {
+                CanMove = false;
+            }
+            isEngage = value;
+        }
+    }
+
+    private void Awake()
+    {
+        UnitList.AddUnit<Enemy>(this);
     }
 }

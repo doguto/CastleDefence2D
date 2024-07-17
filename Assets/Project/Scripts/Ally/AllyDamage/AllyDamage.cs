@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AllyDamage : Damage
+public abstract class AllyDamage : DamageBase
 {
-    [SerializeField] protected Ally ally;
+    [SerializeField] protected AllyBase ally;
+    [SerializeField] protected AllyDeath allyDeath;
     [SerializeField] protected SpriteRenderer[] spriteRenderers;
     [SerializeField] protected float damagedEffectLength;
     protected WaitForSeconds damagedEffectDeray;

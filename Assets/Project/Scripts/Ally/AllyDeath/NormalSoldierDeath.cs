@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class NormalSoldierDeath : AllyDeath
 {
+    [SerializeField] Soldier soldier;
+    [SerializeField] GameObject soul;
+
+
     public override void CallDeath()
     {
-        Death();
+        soldier.CanAttack = false;
+        soldier.CanDamaged = false;
+        soldier.CanMove = false;
+        this.gameObject.tag = deadTag;
+
+        Die();
     }
 
-    protected override IEnumerator Death()
+    protected override void Die()
     {
-        yield return 0;
+        Instantiate(soul,myTransform.position,Quaternion.identity);
+        UnitList.RemoveUnit<Soldier>(soldier);
+        Destroy(this.gameObject);
     }
 }
