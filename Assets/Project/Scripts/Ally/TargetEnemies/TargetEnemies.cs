@@ -6,11 +6,7 @@ public class TargetEnemies : MonoBehaviour
 {
     [SerializeField] List<Enemy> targetEnemies;
 
-    private void Awake()
-    {
-        //targetEnemies = new List<Enemy>();
-    }
-
+    
     public void AddTarget(Enemy enemy)
     {
         if (!enemy) return;

@@ -9,8 +9,11 @@ public class NormalEnemyDeath : EnemyDeath
         Death();
     }
 
-    protected override IEnumerator Death()
+    protected override void Death()
     {
-        yield return 0;
+        enemy.EngagingAlly.EngagingAmount--;
+        Instantiate(enemySoul, myTransform.position, Quaternion.identity);
+        UnitList.RemoveUnit<Enemy>(this.gameObject.GetComponent<Enemy>());
+        Destroy(this.gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyDamage : Damage
+public abstract class EnemyDamage : DamageBase
 {
     [SerializeField] protected Enemy enemy;
     [SerializeField] protected EnemyDeath enemyDeath;
@@ -25,7 +25,7 @@ public abstract class EnemyDamage : Damage
     {
         if (power - duration < 0)
         {
-            return 0;
+            return 1;
         }
         return power - duration;
     }

@@ -5,15 +5,18 @@ using UnityEngine;
 public class SordAttack : AllyAttack
 {
     [SerializeField] Soldier soldier;
-    [SerializeField] Transform soldierTransform;
+    Transform soldierTransform;
     [SerializeField] Vector3 slashRotateAdd;
     [SerializeField] float slashedDerayTime = 0.1f;
     WaitForSeconds slashedDeray;
+    readonly string _slashSEKey = "Slash";
+
     private void Awake()
     {
         attackDeray = new WaitForSeconds(attackInterval);
         slashedDeray = new WaitForSeconds(slashedDerayTime);
         soldier.CanAttack = true;
+        soldierTransform = transform;
     }
 
     private void Update()
@@ -26,6 +29,18 @@ public class SordAttack : AllyAttack
 
         if (!soldier.CanAttack) return;
         if (!soldier.IsEngage) return;
+        if (!soldier.EngagingEnemy)
+        {
+            soldier.IsEngage = false;
+            soldier.CanMove = true;
+            return;
+        }
+        if (!soldier.EngagingEnemyDamage)
+        {
+            soldier.IsEngage = false;
+            soldier.CanMove = true;
+            return;
+        }
 
         soldier.CanAttack = false;
         StartCoroutine(Slach());
@@ -39,23 +54,27 @@ public class SordAttack : AllyAttack
 
     IEnumerator Slach()
     {
+        Audio.SEPlayOneShot(_slashSEKey);
         Vector3 preRotation = soldierTransform.eulerAngles;
-        Vector3 postRotation;
-        if (soldierTransform.eulerAngles.y == 0)
-        {
-            postRotation = preRotation - slashRotateAdd;
-        }
-        else
-        {
-            postRotation = preRotation + slashRotateAdd;
-        }
-        soldierTransform.eulerAngles = postRotation;
+        soldierTransform.eulerAngles = SlashRotate(preRotation);
         soldier.EngagingEnemyDamage.CallDamaged(power);
 
         yield return slashedDeray;
 
         soldierTransform.eulerAngles = preRotation;
         StartCoroutine(AttackWait());
+    }
+
+
+    //HelperMethod
+
+    Vector3 SlashRotate(Vector3 preRotation)
+    {
+        if (soldierTransform.localEulerAngles.y == 0)
+        {
+            return preRotation - slashRotateAdd;
+        }
+        return preRotation + slashRotateAdd;
     }
 }
 

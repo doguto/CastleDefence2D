@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 40ef69fe2ccb2134d98b5ce388cf62b8
+timeCreated: 1508183373
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108879
+  packageName: Tasty Characters - Village Pack
+  packageVersion: 1.0
+  assetPath: Assets/Tasty_Characters - Village Pack/Assets/Prefabs/Chara_11.prefab
+  uploadId: 223113

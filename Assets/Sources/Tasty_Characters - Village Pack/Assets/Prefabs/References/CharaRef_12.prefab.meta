@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 783d8d8f7dd18624ab23bc4077e359f6
+timeCreated: 1507975158
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 108879
+  packageName: Tasty Characters - Village Pack
+  packageVersion: 1.0
+  assetPath: Assets/Tasty_Characters - Village Pack/Assets/Prefabs/References/CharaRef_12.prefab
+  uploadId: 223113

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Transform myTransform;
+    readonly float leftFace = 0;
+    readonly float rightFace = 180;
+
+
     [SerializeField] int hp;
     public int Hp
     {
@@ -11,13 +16,26 @@ public class Enemy : MonoBehaviour
         set { hp = value; }
     }
 
-    Ally engagingAlly;
-    public Ally EngagingAlly
+    AllyBase engagingAlly;
+    public AllyBase EngagingAlly
     {
         get { return engagingAlly; }
-        set 
+        set
         {
             if (value == null) return;
+            if (this.gameObject == null) return;
+
+            Vector3 euler = myTransform.eulerAngles;
+            if (value.gameObject.transform.position.x < myTransform.position.x)
+            {
+                euler.y = leftFace;
+            }
+            else
+            {
+                euler.y = rightFace;
+            }
+            myTransform.eulerAngles = euler;
+
             engagingAlly = value;
         }
     }
@@ -28,16 +46,11 @@ public class Enemy : MonoBehaviour
         get { return duration; }
     }
 
-
-    AllyDamage engagingAllyDamage;
-    public AllyDamage EngagingAllyDamage
+    AllyDamageBase engagingAllyDamage;
+    public AllyDamageBase EngagingAllyDamage
     {
         get { return engagingAllyDamage; }
-        set 
-        {
-            if (!value) return;
-            engagingAllyDamage = value;
-        }
+        set { engagingAllyDamage = value; }
     }
 
     private bool canMove = true; //“®ì‰Â”\«Ši”[•Ï”
@@ -65,6 +78,19 @@ public class Enemy : MonoBehaviour
     public bool IsEngage
     {
         get { return isEngage; }
-        set { isEngage = value; }
+        set
+        { 
+            if (value)
+            {
+                CanMove = false;
+            }
+            isEngage = value;
+        }
+    }
+
+    private void Awake()
+    {
+        UnitList.AddUnit<Enemy>(this);
+        myTransform = transform;
     }
 }

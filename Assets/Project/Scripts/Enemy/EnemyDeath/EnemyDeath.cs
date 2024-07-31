@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class EnemyDeath : Death
 {
+    [SerializeField] protected GameObject enemySoul;
+    [SerializeField] protected Enemy enemy;
     public abstract void CallDeath();
 
-    protected abstract IEnumerator Death();
+    protected abstract void Death();
 }

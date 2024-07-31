@@ -4,16 +4,38 @@ using UnityEngine;
 
 public class NormalSoldierCollision : SoldierCollision
 {
+    [SerializeField] AllyDamageBase allyDamage;
+
     protected override void Collision(Collider2D collision)
     {
         if (soldier.IsEngage) return;
-        if (soldier.EngagingEnemy) return;
+        if (soldier.IsFullEngage) return;
         if (collision.gameObject.tag != enemyTag) return;
 
-        soldier.CanMove = false;
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != soldier.TargetEnemy) return;
+
+        
+        SetEngage(enemy);
+    }
+
+    public override void SetEngage(Enemy enemy)
+    {
+        if (!soldier.TargetEnemy) return;
+
         soldier.IsEngage = true;
-        soldier.EngagingEnemy = collision.gameObject.GetComponent<Enemy>();
-        soldier.EngagingEnemyDamage = collision.gameObject.GetComponent<EnemyDamage>();
+        soldier.EngagingAmount++;
+        soldier.EngagingEnemy = enemy;
+
+        if (!soldier.EngagingEnemy) return;
+
+        enemy.IsEngage = true;
+        enemy.EngagingAlly = soldier;
+        enemy.EngagingAllyDamage = allyDamage;
+
+        if (!enemy) return;
+
+        soldier.EngagingEnemyDamage = enemy.gameObject.GetComponent<EnemyDamage>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

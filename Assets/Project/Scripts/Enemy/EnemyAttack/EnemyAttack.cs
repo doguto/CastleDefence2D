@@ -5,7 +5,12 @@ using UnityEngine;
 public abstract class EnemyAttack : Attack
 {
     [SerializeField] protected Enemy enemy;
-    [SerializeField] protected Transform enemyTransform;
+    protected Transform enemyTransform;
+
+    protected void Awake()
+    {
+        enemyTransform = transform;
+    }
 
     protected abstract void Attack();
 

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public abstract class AllyActiveRange : MonoBehaviour
 {
-    [SerializeField] protected TargetEnemies targetEnemies;
+    //[SerializeField] protected TargetEnemies targetEnemies;
     [SerializeField] protected Soldier soldier;
     protected Vector2 centerPosition;
     [SerializeField] protected float width;
 
     readonly protected string enemyTag = "Enemy";
 
-    protected abstract void TargetSetter(Vector2 centerPosition, float width);
+    protected abstract void TargetSet(Vector2 centerPosition, float width);
 
     protected bool IsInTargetEnemies(Enemy enemy)
     {
         if (!enemy) return false;
 
-        if (targetEnemies.ContainTarget(enemy)) return true;
+        if (UnitList.IsContainUnit<Enemy>(enemy)) return true;
         return false;
     }
 

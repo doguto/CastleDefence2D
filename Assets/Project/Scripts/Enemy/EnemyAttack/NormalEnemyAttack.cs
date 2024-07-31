@@ -10,7 +10,7 @@ public class NormalEnemyAttack : EnemyAttack
     [SerializeField] float attackAngle;
     Vector3 attackRotation;
 
-    private void Awake()
+    private void Start()
     {
         attackRotation = new Vector3(0, 0, attackAngle);
         attackDeray = new WaitForSeconds(attackInterval);
@@ -26,20 +26,34 @@ public class NormalEnemyAttack : EnemyAttack
     {
         if (!enemy.CanAttack) return;
         if (!enemy.IsEngage) return;
+        if (!enemy.EngagingAlly)
+        {
+            enemy.IsEngage = false;
+            enemy.CanMove = true;
+            return;
+        }
 
         enemy.CanAttack = false;
+
+        if (!this.gameObject.activeSelf) return;
+
         StartCoroutine(AttackingCoroutin());
     }
 
     IEnumerator AttackingCoroutin()
     {
-        Vector3 preRotation = enemyTransform.eulerAngles;
-        Vector3 postRotation = preRotation + attackRotation;
-        enemyTransform.eulerAngles = postRotation;
-        enemy.EngagingAllyDamage.CallDamaged(power);
-        yield return attackingDeray;
-        enemyTransform.eulerAngles = preRotation;
-        StartCoroutine(AttackWait());
+        if (this.gameObject.activeSelf)
+        {
+            Vector3 preRotation = enemyTransform.eulerAngles;
+            Vector3 postRotation = preRotation + attackRotation;
+            enemyTransform.eulerAngles = postRotation;
+            enemy.EngagingAllyDamage.CallDamaged(power);
+
+            yield return attackingDeray;
+
+            enemyTransform.eulerAngles = preRotation;
+            StartCoroutine(AttackWait());
+        }
     }
 
     protected override IEnumerator AttackWait()
