@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Soldier : AllyBase
 {
+    [SerializeField] float initY;
+    [SerializeField] int _cost;
+
     Enemy targetEnemy; //ñ⁄ïWEnemyäiî[ïœêî
     public Enemy TargetEnemy
     {
@@ -54,6 +57,28 @@ public class Soldier : AllyBase
 
     private void Awake()
     {
+        Init();
+    }
+
+    void Init()
+    {
+        MoneyManager moneyManager = GameObject.Find("BattleManager").GetComponent<MoneyManager>();
+        if (!moneyManager.CanPurchase(_cost))
+        {
+            Destroy(this.gameObject);
+        }
+
+        moneyManager.Purchase(_cost);
         UnitList.AddUnit<Soldier>(this);
+        Transform myTransform = this.gameObject.transform;
+        Vector2 initPosition = new Vector2(myTransform.position.x, initY);
+        myTransform.position = initPosition;
+    }
+
+    public void OnGameOver()
+    {
+        canMove = false;
+        CanAttack = false;
+        this.gameObject.SetActive(false);
     }
 }

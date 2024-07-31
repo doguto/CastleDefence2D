@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NormalSoldierMove : SoldierMove
 {
-    private void Awake()
+    private void Start()
     {
         centerPosition = transform.position;
         soldier.CanMove = true;

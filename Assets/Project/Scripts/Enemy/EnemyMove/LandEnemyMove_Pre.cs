@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandEnemyMove_Pre : EnemyMoveBase
+public class LandEnemyMove_Pre : EnemyMoveBase //Not use
 {
     //[SerializeField] TargetSetter_Normal targetSetter;
     AllyBase tempTarget;

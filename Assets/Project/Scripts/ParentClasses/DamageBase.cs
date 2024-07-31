@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class DamageBase : MonoBehaviour
 {
-    protected Color damagedColor = new Color32(255, 153, 153, 255);
+    readonly protected Color damagedColor = new Color32(255, 153, 153, 255);
 }

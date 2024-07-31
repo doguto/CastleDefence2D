@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class SoldierMove : MoveBase
 {
     [SerializeField] protected Soldier soldier; //–{‘ÌAllyŠi”[”z—ñ
+    [SerializeField] protected SoldierCollision soldierCollision;
+
     protected Vector3 centerPosition;
     
     protected abstract void MoveToEnemy();
@@ -20,6 +22,8 @@ public abstract class SoldierMove : MoveBase
             if (nextPosition.x < targetPosition.x)
             {
                 nextPosition = targetPosition;
+                soldierCollision.SetEngage(soldier.TargetEnemy);
+
                 return;
             }
             nextEulerAngle = leftEulerAngle;
@@ -30,6 +34,8 @@ public abstract class SoldierMove : MoveBase
             if (nextPosition.x > targetPosition.x)
             {
                 nextPosition = targetPosition;
+                soldierCollision.SetEngage(soldier.TargetEnemy);
+
                 return;
             }
             nextEulerAngle = rightEulerAngle;

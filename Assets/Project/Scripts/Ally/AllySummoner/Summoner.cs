@@ -11,9 +11,9 @@ public abstract class Summoner : MonoBehaviour
     [SerializeField] protected Transform summonerTransform;
     [SerializeField] protected SpriteRenderer[] spriteRenderer;
 
-    [SerializeField] int mouseZPosition;
-    [SerializeField] protected Vector2 TopRightLimit;
-    [SerializeField] protected Vector2 BottomLeftLimit;
+    readonly int mouseZPosition = 10;
+    readonly protected Vector2 TopRightLimit = new Vector2(12,4);
+    readonly protected Vector2 BottomLeftLimit = new Vector2(-10, -8);
     protected abstract void Summon();
 
     protected abstract void InitialSet();

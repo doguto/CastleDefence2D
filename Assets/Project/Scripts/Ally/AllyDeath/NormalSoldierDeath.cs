@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class NormalSoldierDeath : AllyDeath
+public class NormalSoldierDeath : AllyDeathBase
 {
     [SerializeField] Soldier soldier;
     [SerializeField] GameObject soul;

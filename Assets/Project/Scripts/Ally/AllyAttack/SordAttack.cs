@@ -5,15 +5,18 @@ using UnityEngine;
 public class SordAttack : AllyAttack
 {
     [SerializeField] Soldier soldier;
-    [SerializeField] Transform soldierTransform;
+    Transform soldierTransform;
     [SerializeField] Vector3 slashRotateAdd;
     [SerializeField] float slashedDerayTime = 0.1f;
     WaitForSeconds slashedDeray;
+    readonly string _slashSEKey = "Slash";
+
     private void Awake()
     {
         attackDeray = new WaitForSeconds(attackInterval);
         slashedDeray = new WaitForSeconds(slashedDerayTime);
         soldier.CanAttack = true;
+        soldierTransform = transform;
     }
 
     private void Update()
@@ -32,6 +35,12 @@ public class SordAttack : AllyAttack
             soldier.CanMove = true;
             return;
         }
+        if (!soldier.EngagingEnemyDamage)
+        {
+            soldier.IsEngage = false;
+            soldier.CanMove = true;
+            return;
+        }
 
         soldier.CanAttack = false;
         StartCoroutine(Slach());
@@ -45,6 +54,7 @@ public class SordAttack : AllyAttack
 
     IEnumerator Slach()
     {
+        Audio.SEPlayOneShot(_slashSEKey);
         Vector3 preRotation = soldierTransform.eulerAngles;
         soldierTransform.eulerAngles = SlashRotate(preRotation);
         soldier.EngagingEnemyDamage.CallDamaged(power);
@@ -60,7 +70,7 @@ public class SordAttack : AllyAttack
 
     Vector3 SlashRotate(Vector3 preRotation)
     {
-        if (soldierTransform.eulerAngles.y == 0)
+        if (soldierTransform.localEulerAngles.y == 0)
         {
             return preRotation - slashRotateAdd;
         }

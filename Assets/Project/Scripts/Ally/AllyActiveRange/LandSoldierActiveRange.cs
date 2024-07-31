@@ -6,10 +6,10 @@ public class LandSoldierActiveRange : AllyActiveRange
 {
     private void FixedUpdate()
     {
-        TargetSetter(centerPosition, width);
+        TargetSet(centerPosition, width);
     }
 
-    protected override void TargetSetter(Vector2 centerPosition, float width)
+    protected override void TargetSet(Vector2 centerPosition, float width)
     {
         if (soldier.IsEngage) return;
         if (width == 0) return;

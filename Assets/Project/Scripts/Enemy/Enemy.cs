@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    Transform myTransform;
+    readonly float leftFace = 0;
+    readonly float rightFace = 180;
+
+
     [SerializeField] int hp;
     public int Hp
     {
@@ -15,7 +20,24 @@ public class Enemy : MonoBehaviour
     public AllyBase EngagingAlly
     {
         get { return engagingAlly; }
-        set { engagingAlly = value; }
+        set
+        {
+            if (value == null) return;
+            if (this.gameObject == null) return;
+
+            Vector3 euler = myTransform.eulerAngles;
+            if (value.gameObject.transform.position.x < myTransform.position.x)
+            {
+                euler.y = leftFace;
+            }
+            else
+            {
+                euler.y = rightFace;
+            }
+            myTransform.eulerAngles = euler;
+
+            engagingAlly = value;
+        }
     }
 
     int duration;
@@ -24,8 +46,8 @@ public class Enemy : MonoBehaviour
         get { return duration; }
     }
 
-    AllyDamage engagingAllyDamage;
-    public AllyDamage EngagingAllyDamage
+    AllyDamageBase engagingAllyDamage;
+    public AllyDamageBase EngagingAllyDamage
     {
         get { return engagingAllyDamage; }
         set { engagingAllyDamage = value; }
@@ -69,5 +91,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         UnitList.AddUnit<Enemy>(this);
+        myTransform = transform;
     }
 }

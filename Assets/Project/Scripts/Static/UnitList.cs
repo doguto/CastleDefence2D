@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UnitList : Singleton<UnitList>
+public class UnitList : MonoBehaviour
 {
     private static List<Enemy> enemies = new List<Enemy>();
     private static List<Soldier> soldiers = new List<Soldier>();
     [SerializeField] Gate _gate;
     private static Gate gate;
  
-    public override void Awake()
+    public void Awake()
     {
-        RemoveDuplicates(); //Singleton
+        //RemoveDuplicates(); //Singleton
+
+        enemies.Clear();
+        soldiers.Clear();
 
         gate = _gate;
     }
@@ -40,7 +44,7 @@ public class UnitList : Singleton<UnitList>
         }
     }
 
-    public static bool ContainUnit<T>(T unit)
+    public static bool IsContainUnit<T>(T unit)
     {
         if (unit is Enemy)
         {
@@ -55,34 +59,63 @@ public class UnitList : Singleton<UnitList>
 
     public static Enemy GetTargetEnemy(Vector2 centerPosition, float width)
     {
-        Enemy targetEnemy = null;
-        float minX = 100; //100:ÇΩÇæÇÃëÂÇ´Ç¢êî.ì¡Ç…à”ñ°ÇÕñ≥Ç¢.
-        if (enemies == null)
+        int rank = 0;
+        //float minX = 100; //100:ÇΩÇæÇÃëÂÇ´Ç¢êî.ì¡Ç…à”ñ°ÇÕñ≥Ç¢.
+        if (enemies.Count == 0)
         {
             return null;
         }
 
+        Enemy[] targetCandidats = new Enemy[enemies.Count];
+
         foreach (Enemy enemy in enemies)
         {
             Vector2 enemyPosition = enemy.transform.position;
-            if (!(centerPosition.x - width < enemyPosition.x && enemyPosition.x < centerPosition.x + width)) continue;
-
-            if (minX == 100)
+            if (!IsIn.Vector1Range(centerPosition.x - width, centerPosition.x + width, enemy.transform.position.x))
             {
-                minX = enemyPosition.x;
-                targetEnemy = enemy;
                 continue;
             }
 
-            if (enemyPosition.x > minX) continue;
+            for (int i = 0; i < targetCandidats.Length; i++)
+            {
+                if (targetCandidats[i] == null)
+                {
+                    targetCandidats[i] = enemy;
+                    break;
+                }
 
-            minX = enemyPosition.x;
-            targetEnemy = enemy;
+                if (targetCandidats[i].transform.position.x < enemyPosition.x)
+                {
+                    continue;
+                }
+
+                for (int j = targetCandidats.Length - 1; j > i; j--)
+                {
+                    targetCandidats[j] = targetCandidats[j - 1];
+                }
+                targetCandidats[i] = enemy;
+            }
         }
 
-        if (!targetEnemy) return null;
+        if (targetCandidats.Length == 0)
+        {
+            return null;
+        }
 
-        return targetEnemy;
+        for (int i = 0; i < targetCandidats.Length; i++)
+        {
+            if (targetCandidats[i] == null) break;
+            if (!targetCandidats[i].IsEngage) break;
+
+            rank++;
+        }
+
+        if (targetCandidats.Length - 1 < rank)
+        {
+            return targetCandidats[targetCandidats.Length - 1];
+        }
+        
+        return targetCandidats[rank];
     }
 
     public static AllyBase GetTargetAlly(Transform enemyTransform)
@@ -119,6 +152,16 @@ public class UnitList : Singleton<UnitList>
             target = gate;
 
         return target;
+    }
+
+    public static void HideSoldiers()
+    {
+        foreach (Soldier soldier in soldiers)
+        {
+            if (!soldier) continue;
+
+            soldier.gameObject.SetActive(false);
+        }
     }
 
     public static Gate SetGate()

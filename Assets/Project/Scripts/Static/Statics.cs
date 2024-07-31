@@ -6,6 +6,11 @@ using UnityEngine;
 
 public static class IsIn
 { 
+    public static bool Vector1Range(float left, float right, float myPositionX)
+    {
+        return left < myPositionX && myPositionX < right;
+    }
+
     public static bool Vector2Range(Vector2 leftBottom, Vector2 rightTop, Vector2 myPosition)
     {
         bool xDimention = (leftBottom.x < myPosition.x && myPosition.x < rightTop.x);

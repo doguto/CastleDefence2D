@@ -14,7 +14,7 @@ public class NormalEnemyCollision : EnemyCollisionBase
 
         enemy.IsEngage = true;
         enemy.EngagingAlly = collision.gameObject.GetComponent<AllyBase>();
-        enemy.EngagingAllyDamage = collision.gameObject.GetComponent<AllyDamage>();
+        enemy.EngagingAllyDamage = collision.gameObject.GetComponent<AllyDamageBase>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -11,13 +11,13 @@ public abstract class AllyActiveRange : MonoBehaviour
 
     readonly protected string enemyTag = "Enemy";
 
-    protected abstract void TargetSetter(Vector2 centerPosition, float width);
+    protected abstract void TargetSet(Vector2 centerPosition, float width);
 
     protected bool IsInTargetEnemies(Enemy enemy)
     {
         if (!enemy) return false;
 
-        if (UnitList.ContainUnit<Enemy>(enemy)) return true;
+        if (UnitList.IsContainUnit<Enemy>(enemy)) return true;
         return false;
     }
 

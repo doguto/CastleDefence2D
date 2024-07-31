@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalSoldierCollision : SoldierCollision
 {
-    [SerializeField] AllyDamage allyDamage;
+    [SerializeField] AllyDamageBase allyDamage;
 
     protected override void Collision(Collider2D collision)
     {
@@ -12,15 +12,30 @@ public class NormalSoldierCollision : SoldierCollision
         if (soldier.IsFullEngage) return;
         if (collision.gameObject.tag != enemyTag) return;
 
-        Debug.Log("collision");
-        soldier.CanMove = false;
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != soldier.TargetEnemy) return;
+
+        
+        SetEngage(enemy);
+    }
+
+    public override void SetEngage(Enemy enemy)
+    {
+        if (!soldier.TargetEnemy) return;
+
         soldier.IsEngage = true;
         soldier.EngagingAmount++;
-        soldier.EngagingEnemy = collision.gameObject.GetComponent<Enemy>();
-        soldier.EngagingEnemy.IsEngage = true;
-        soldier.EngagingEnemy.EngagingAlly = soldier;
-        soldier.EngagingEnemy.EngagingAllyDamage = allyDamage;
-        soldier.EngagingEnemyDamage = collision.gameObject.GetComponent<EnemyDamage>();
+        soldier.EngagingEnemy = enemy;
+
+        if (!soldier.EngagingEnemy) return;
+
+        enemy.IsEngage = true;
+        enemy.EngagingAlly = soldier;
+        enemy.EngagingAllyDamage = allyDamage;
+
+        if (!enemy) return;
+
+        soldier.EngagingEnemyDamage = enemy.gameObject.GetComponent<EnemyDamage>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

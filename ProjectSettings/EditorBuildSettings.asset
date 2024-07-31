@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sources/Blackthornprod/100 Fantasy Characters Pack/Scenes/Demo.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Project/Scenes/TitleScene.unity
+    guid: 9017e11fe6a66db41b55aef21b8fd28b
+  - enabled: 1
+    path: Assets/Project/Scenes/BattleScene.unity
+    guid: e2f4b30acc60b9e4eb496c273d3031d2
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

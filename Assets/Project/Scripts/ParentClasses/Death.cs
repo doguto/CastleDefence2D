@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class Death : MonoBehaviour
 {
-    [SerializeField] protected Transform myTransform;
+    protected Transform myTransform;
     //[SerializeField] protected float deathDerayTime;
     //protected WaitForSeconds deathDeray;
     protected readonly string deadTag = "Dead";
 
-    //protected void Awake()
-    //{
-    //    deathDeray = new WaitForSeconds(deathDerayTime);
-    //}
+    protected void Awake()
+    {
+        myTransform = transform;
+    }
 }

@@ -25,7 +25,7 @@ public abstract class EnemyDamage : DamageBase
     {
         if (power - duration < 0)
         {
-            return 0;
+            return 1;
         }
         return power - duration;
     }

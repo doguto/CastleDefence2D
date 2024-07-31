@@ -238,7 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  myTransform: {fileID: 9157392703032845391}
   enemy: {fileID: 2469955921523947442}
 --- !u!114 &4967272799831363651
 MonoBehaviour:
@@ -252,10 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a0b9886b508c2498217268c44d7752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 20
+  power: 15
   attackInterval: 0.8
   enemy: {fileID: 2469955921523947442}
-  enemyTransform: {fileID: 9157392703032845391}
   attackTime: 0.1
   attackAngle: 10
 --- !u!114 &1861341914130456938
@@ -286,6 +284,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fc71e6f9bf07d4197e5e01e3d436f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 9157392703032845391}
   enemySoul: {fileID: 9139775938914883985, guid: bf6f2e7999d0711478416df30f9cd719, type: 3}
   enemy: {fileID: 2469955921523947442}

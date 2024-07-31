@@ -6,14 +6,11 @@ public class LandEnemyMove : EnemyMoveBase
 {
     AllyBase target;
 
-    private void Awake()
+    private void Start()
     {
         enemy.CanMove = true;
         enemy.IsEngage = false;
-    }
 
-    private void Start()
-    {
         target = UnitList.SetGate();
     }
 

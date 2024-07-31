@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseFollower : MonoBehaviour
+public class MouseFollower : Singleton<MouseFollower>
 {
-    [SerializeField] Transform myTransform;
-    IClicked clicked;
+    Transform myTransform;
     bool isCollisionCheck = false;
     //bool isMouseEmpty = true;
+
+    private void Start()
+    {
+        myTransform = transform;
+    }
 
     private void Update()
     {
@@ -18,34 +22,25 @@ public class MouseFollower : MonoBehaviour
     {
         if (!Input.GetMouseButtonDown(0)) return;
 
-        //if (isMouseEmpty) 
         GetClicked();
-        //ReleaseHoverer();
     }
 
     void GetClicked()
     {
-        clicked = null;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         myTransform.position = mousePosition;
         isCollisionCheck = true;
     }
 
-    //void ReleaseHoverer()
-    //{
-
-    //}
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!isCollisionCheck) return;
-        if (clicked != null) return;
 
-        IClicked iclicked = collision.gameObject.GetComponent<IClicked>();
-        if (iclicked == null) return;
+        IClicked clicked = collision.gameObject.GetComponent<IClicked>();
+        if (clicked == null) return;
 
-        clicked = iclicked;
         clicked.OnClicked();
         isCollisionCheck = false;
     }

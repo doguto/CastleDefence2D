@@ -17,7 +17,7 @@ public class AllyBase : MonoBehaviour
     }
 
     [SerializeField] int durability;
-    public int Duration
+    public int Durability
     {
         get { return durability; }
     }
