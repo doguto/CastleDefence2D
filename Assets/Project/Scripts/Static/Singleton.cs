@@ -34,10 +34,6 @@ public class Singleton<T> : MonoBehaviour where T : Component
         {
             Destroy( _instance );
         }
-
-        //GameObject gameObj = new GameObject();
-        //gameObj.name = typeof(T).Name;
-        //_instance = gameObj.AddComponent<T>();
     }
 
     public void RemoveDuplicates()
@@ -50,15 +46,5 @@ public class Singleton<T> : MonoBehaviour where T : Component
         }
 
         DontDestroyOnLoad(gameObject);
-
-        //if (_instance == null)
-        //{
-        //    _instance = this as T;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
     }
 }
