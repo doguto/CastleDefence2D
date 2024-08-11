@@ -4,48 +4,48 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    [SerializeField] MoneyText _MoneyText;
+    [SerializeField] MoneyText _moneyText;
 
-    Money _Money;
-    int _AddAmountPerDS = 1; //deciSecond–ˆ‚ÌMoney‘‰Á—Ê
+    Money _money;
+    int _addAmountPerDS = 1; //deciSecond–ˆ‚ÌMoney‘‰Á—Ê
 
-    WaitForSeconds _AddMoneyDeray;
-    readonly float _DerayTime = 0.1f;
+    WaitForSeconds _addMoneyDeray;
+    readonly float _derayTime = 0.1f;
 
-    bool _CanAddMoney = false;
+    bool _canAddMoney = false;
 
     private void Awake()
     {
-        _Money = new Money();
-        _AddMoneyDeray = new WaitForSeconds(_DerayTime);
+        _money = new Money();
+        _addMoneyDeray = new WaitForSeconds(_derayTime);
 
-        _Money.MaxAmount = 300;
+        _money.MaxAmount = 300;
     }
 
     public bool CanPurchase(int cost)
     {
-        return _Money.Amount >= cost;
+        return _money.Amount >= cost;
     }
 
     public void Purchase(int cost)
     {
-        _Money.UseMoney(cost);
+        _money.UseMoney(cost);
     }
 
     public void StartMoney()
     {
-        _CanAddMoney = true;
+        _canAddMoney = true;
         StartCoroutine(AddMoneyCoroutine());
     }
 
     IEnumerator AddMoneyCoroutine()
     {
-        _Money.AddMoney(_AddAmountPerDS);
-        _MoneyText.DesplayMoney(_Money.Amount, _Money.MaxAmount);
+        _money.AddMoney(_addAmountPerDS);
+        _moneyText.DesplayMoney(_money.Amount, _money.MaxAmount);
 
-        yield return _AddMoneyDeray;
+        yield return _addMoneyDeray;
         
-        if (_CanAddMoney)
+        if (_canAddMoney)
         {
             StartCoroutine(AddMoneyCoroutine());
         }

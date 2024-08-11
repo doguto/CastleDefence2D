@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MouseHover : MonoBehaviour
 {
-    [SerializeField] Transform myTransform;
-    bool isSetMode = false;
+    [SerializeField] Transform _myTransform;
+    bool _isSetMode = false;
 
     private void Update()
     {
@@ -19,15 +19,15 @@ public class MouseHover : MonoBehaviour
 
     void FollowMouse()
     {
-        if (!isSetMode) return;
+        if (!_isSetMode) return;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-        myTransform.position = mousePosition;
+        _myTransform.position = mousePosition;
     }
 
     void ChangeMode()
     {
-        isSetMode = !isSetMode;
+        _isSetMode = !_isSetMode;
     }
 }

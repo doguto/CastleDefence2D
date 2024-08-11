@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summonedObject: {fileID: 7890065742658191746, guid: eefef8933a7124449a792177e8681437, type: 3}
-  summonerTransform: {fileID: 7027010154393250637}
+  activeRange: {fileID: 4231046232223180022, guid: 9775ecf565bd0c641a74b22d016c1a9e, type: 3}
   spriteRenderer:
   - {fileID: 3248029506119739154}
   - {fileID: 1409302360245037986}

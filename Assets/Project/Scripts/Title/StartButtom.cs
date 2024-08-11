@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartButtom : MonoBehaviour, IClicked
 {
-    readonly string battleScene = "BattleScene";
+    readonly string _battleScene = "BattleScene";
 
     public void OnClicked()
     {
@@ -14,6 +14,6 @@ public class StartButtom : MonoBehaviour, IClicked
 
     void GameStart()
     {
-        SceneManager.LoadScene(battleScene);
+        SceneManager.LoadScene(_battleScene);
     }
 }

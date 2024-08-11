@@ -11,18 +11,14 @@ public class NormalSoldierSummoner : Summoner, IClicked
 
     protected override void Summon()
     {
-        Instantiate(summonedObject,summonerTransform.position,Quaternion.identity);
+        Instantiate(summonedObject, summonerTransform.position, Quaternion.identity);
         Destroy(this.gameObject);
-    }
-
-    protected override void InitialSet()
-    {
-
     }
 
     public void OnClicked()
     {
         if (!canSummon) return;
+
         Summon();
     }
 }

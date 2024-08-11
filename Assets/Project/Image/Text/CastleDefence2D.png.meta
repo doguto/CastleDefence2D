@@ -191,7 +191,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CastleDefence2D_0: -8544970748119957425
+      CastleDefence2D_1: -8386868303589530787
+      CastleDefence2D_2: 819745780719587947
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

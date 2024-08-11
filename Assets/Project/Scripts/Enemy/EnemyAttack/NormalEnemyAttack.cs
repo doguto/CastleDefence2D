@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class NormalEnemyAttack : EnemyAttack
 {
-    [SerializeField] float attackTime;
-    WaitForSeconds attackingDeray;
-    [SerializeField] float attackAngle;
-    Vector3 attackRotation;
+    [SerializeField] float _attackTime;
+    WaitForSeconds _attackingDeray;
+    [SerializeField] float _attackAngle;
+    Vector3 _attackRotation;
 
     private void Start()
     {
-        attackRotation = new Vector3(0, 0, attackAngle);
+        _attackRotation = new Vector3(0, 0, _attackAngle);
         attackDeray = new WaitForSeconds(attackInterval);
-        attackingDeray = new WaitForSeconds(attackTime);
+        _attackingDeray = new WaitForSeconds(_attackTime);
     }
 
     private void Update()
@@ -45,11 +45,11 @@ public class NormalEnemyAttack : EnemyAttack
         if (this.gameObject.activeSelf)
         {
             Vector3 preRotation = enemyTransform.eulerAngles;
-            Vector3 postRotation = preRotation + attackRotation;
+            Vector3 postRotation = preRotation + _attackRotation;
             enemyTransform.eulerAngles = postRotation;
             enemy.EngagingAllyDamage.CallDamaged(power);
 
-            yield return attackingDeray;
+            yield return _attackingDeray;
 
             enemyTransform.eulerAngles = preRotation;
             StartCoroutine(AttackWait());

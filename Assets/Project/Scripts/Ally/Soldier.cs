@@ -4,54 +4,54 @@ using UnityEngine;
 
 public class Soldier : AllyBase
 {
-    [SerializeField] float initY;
+    [SerializeField] float _initY;
     [SerializeField] int _cost;
 
-    Enemy targetEnemy; //–Ú•WEnemyŠi”[•Ï”
+    Enemy _targetEnemy; //–Ú•WEnemyŠi”[•Ï”
     public Enemy TargetEnemy
     {
-        get { return targetEnemy; }
+        get { return _targetEnemy; }
         set 
         {
             if (value == null) return;
-            targetEnemy = value; 
+            _targetEnemy = value; 
         }
     }
 
-    Enemy engagingEnemy; //Œ»İÚ“G’†‚ÌEnemy
+    Enemy _engagingEnemy; //Œ»İÚ“G’†‚ÌEnemy
     public Enemy EngagingEnemy
     {
-        get { return engagingEnemy; }
+        get { return _engagingEnemy; }
         set
         {
             if (!value) return;
-            engagingEnemy = value;
+            _engagingEnemy = value;
         }
     }
 
-    EnemyDamage engagingEnemyDamage; //Œ»İÚ“G’†‚ÌEnemy‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é—p
+    EnemyDamage _engagingEnemyDamage; //Œ»İÚ“G’†‚ÌEnemy‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é—p
     public EnemyDamage EngagingEnemyDamage
     {
-        get { return engagingEnemyDamage; }
+        get { return _engagingEnemyDamage; }
         set
         {
             if (!value) return;
-            engagingEnemyDamage = value;
+            _engagingEnemyDamage = value;
         }
     }
 
-    bool canMove; //“®ì‰Â”\«Ši”[•Ï”
+    bool _canMove; //“®ì‰Â”\«Ši”[•Ï”
     public bool CanMove
     {
-        get { return canMove; }
-        set { canMove = value;}
+        get { return _canMove; }
+        set { _canMove = value;}
     }
 
-    bool isEngage;
+    bool _isEngage;
     public bool IsEngage
     {
-        get { return isEngage; }
-        set { isEngage = value; }
+        get { return _isEngage; }
+        set { _isEngage = value; }
     }
 
 
@@ -71,13 +71,13 @@ public class Soldier : AllyBase
         moneyManager.Purchase(_cost);
         UnitList.AddUnit<Soldier>(this);
         Transform myTransform = this.gameObject.transform;
-        Vector2 initPosition = new Vector2(myTransform.position.x, initY);
+        Vector2 initPosition = new Vector2(myTransform.position.x, _initY);
         myTransform.position = initPosition;
     }
 
     public void OnGameOver()
     {
-        canMove = false;
+        _canMove = false;
         CanAttack = false;
         this.gameObject.SetActive(false);
     }

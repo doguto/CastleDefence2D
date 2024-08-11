@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MouseFollower : Singleton<MouseFollower>
 {
-    Transform myTransform;
-    bool isCollisionCheck = false;
+    Transform _myTransform;
+    bool _isCollisionCheck = false;
     //bool isMouseEmpty = true;
 
     private void Start()
     {
-        myTransform = transform;
+        _myTransform = transform;
     }
 
     private void Update()
@@ -29,19 +29,19 @@ public class MouseFollower : Singleton<MouseFollower>
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-        myTransform.position = mousePosition;
-        isCollisionCheck = true;
+        _myTransform.position = mousePosition;
+        _isCollisionCheck = true;
     }
 
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!isCollisionCheck) return;
+        if (!_isCollisionCheck) return;
 
         IClicked clicked = collision.gameObject.GetComponent<IClicked>();
         if (clicked == null) return;
 
         clicked.OnClicked();
-        isCollisionCheck = false;
+        _isCollisionCheck = false;
     }
 }

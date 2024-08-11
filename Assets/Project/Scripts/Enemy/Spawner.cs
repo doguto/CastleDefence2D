@@ -5,21 +5,21 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     //[SerializeField] GameObject[] enemiePrefabs; //Enemyˆê——HŠi”[•Ï”
-    [SerializeField] SpawnInfoDB spawnInfoDB; //Spawnî•ñŠi”[ƒf[ƒ^ƒx[ƒX
-    List<SpawnInfo> spawnInfoList;
-    Enemy[] spawningEnemies; //Spawn‚·‚éEnemyŠi”[—p•Ï”
+    [SerializeField] SpawnInfoDB _spawnInfoDB; //Spawnî•ñŠi”[ƒf[ƒ^ƒx[ƒX
+    List<SpawnInfo> _spawnInfoList;
+    Enemy[] _spawningEnemies; //Spawn‚·‚éEnemyŠi”[—p•Ï”
 
-    [SerializeField] Transform[] landSpawnPoints; //SpawnPosition in LandŠi”[•Ï”
-    [SerializeField] Transform[] skySpawnPoints; //SpawnPosition in SkyŠi”[”z—ñ
+    [SerializeField] Transform[] _landSpawnPoints; //SpawnPosition in LandŠi”[•Ï”
+    [SerializeField] Transform[] _skySpawnPoints; //SpawnPosition in SkyŠi”[”z—ñ
     //readonly int enemyKindsInWave = 0;
 
-    [SerializeField] float spawnIntervalTime;
-    WaitForSeconds spawnDeray;
+    [SerializeField] float _spawnIntervalTime;
+    WaitForSeconds _spawnDeray;
 
     private void Awake()
     {
-        spawnDeray = new WaitForSeconds(spawnIntervalTime);
-        spawnInfoList = spawnInfoDB.waveSpawnInfo;
+        _spawnDeray = new WaitForSeconds(_spawnIntervalTime);
+        _spawnInfoList = _spawnInfoDB.waveSpawnInfo;
     }
 
     public void CallSpawn(int waveNumber)
@@ -29,20 +29,20 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawanCoroutin(int waveNumber)
     {
-        int waveAmount = spawnInfoList[waveNumber - 1].waveAmount;
+        int waveAmount = _spawnInfoList[waveNumber - 1].waveAmount;
         for (int i = 0; i < waveAmount; i++)
         {
             Spawn(waveNumber);
-            yield return spawnDeray;
+            yield return _spawnDeray;
         }
 
     }
 
     void Spawn(int waveNumber)
     {
-        int waveEnemyKinds = spawnInfoList[waveNumber - 1].enemies.Length;
+        int waveEnemyKinds = _spawnInfoList[waveNumber - 1].enemies.Length;
         int enemyIndex = Random.Range(0, waveEnemyKinds - 1);
-        int tempPoint = Random.Range(0,landSpawnPoints.Length-1);
-        Instantiate(spawnInfoList[waveNumber - 1].enemies[enemyIndex], landSpawnPoints[tempPoint].position, Quaternion.identity);
+        int tempPoint = Random.Range(0,_landSpawnPoints.Length-1);
+        Instantiate(_spawnInfoList[waveNumber - 1].enemies[enemyIndex], _landSpawnPoints[tempPoint].position, Quaternion.identity);
     }
 }

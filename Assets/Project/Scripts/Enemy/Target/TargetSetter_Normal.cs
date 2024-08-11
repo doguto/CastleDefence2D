@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TargetSetter_Normal : MonoBehaviour
 {
-    [SerializeField] TargetList targetList;
+    [SerializeField] TargetList _targetList;
 
     public AllyBase SetTarget(Transform enemyTransform)
     {
-        if (targetList.robots == null)
+        if (_targetList.robots == null)
         {
-            return targetList.gate;
+            return _targetList.gate;
         }
 
         AllyBase target = null;
@@ -18,7 +18,7 @@ public class TargetSetter_Normal : MonoBehaviour
         float finalDistance = 0;
         float minDistance = 0;
 
-        foreach (Soldier robot in targetList.robots)
+        foreach (Soldier robot in _targetList.robots)
         {
             tempDistance = (enemyTransform.position - robot.transform.position).sqrMagnitude;
             if (minDistance == 0)
@@ -34,11 +34,11 @@ public class TargetSetter_Normal : MonoBehaviour
                 target = robot;
             }
         }
-        finalDistance = (enemyTransform.position - targetList.gate.transform.position).sqrMagnitude;
+        finalDistance = (enemyTransform.position - _targetList.gate.transform.position).sqrMagnitude;
 
         if (finalDistance < minDistance)
         {
-            target = targetList.gate;
+            target = _targetList.gate;
         }
 
         return target;

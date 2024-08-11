@@ -25,7 +25,7 @@ public class Audio : Singleton<Audio>
     public static Dictionary <string, AudioClip> SEs = new Dictionary<string, AudioClip>();
 
     //Fade In/Out—p•Ï”
-    readonly private static float fadeSeconds = 0.5f; //Fade‚É‚©‚©‚éŠÔ
+    readonly private static float _fadeSeconds = 0.5f; //Fade‚É‚©‚©‚éŠÔ
     private static float _fadeing = 0;
     private static float _nowVolume = 0;
 
@@ -117,10 +117,10 @@ public class Audio : Singleton<Audio>
     {
         _fadeing = 0;
         Audio._nowVolume = nowVolume;
-        while (_fadeing < fadeSeconds)
+        while (_fadeing < _fadeSeconds)
         {
             _fadeing += Time.deltaTime;
-            SetBGMVolume(nowVolume * (1 - _fadeing / fadeSeconds));
+            SetBGMVolume(nowVolume * (1 - _fadeing / _fadeSeconds));
         }
         SetBGMVolume(0);
     }
@@ -130,10 +130,10 @@ public class Audio : Singleton<Audio>
     {
         _fadeing = 0;
         _nowVolume = now;
-        while (_fadeing < fadeSeconds)
+        while (_fadeing < _fadeSeconds)
         {
             _fadeing += Time.deltaTime;
-            SetBGMVolume(now * (_fadeing / fadeSeconds));
+            SetBGMVolume(now * (_fadeing / _fadeSeconds));
         }
         SetBGMVolume(_nowVolume);
     }
