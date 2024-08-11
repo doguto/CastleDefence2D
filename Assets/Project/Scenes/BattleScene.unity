@@ -164,14 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee2726ed779c054285b41517e695903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 1750720327}
-  spawnInfoDB: {fileID: 11400000, guid: 7573105ba342b9b44a96b5e923694ae5, type: 2}
-  _Timer: {fileID: 1194056103}
-  _MoneyManager: {fileID: 18355682}
-  congratulations: {fileID: 1897865223932418568, guid: 6c2e0605429278e4c9658689317a3b43, type: 3}
-  scoreIs: {fileID: 5910780963144784978, guid: 0dd8eddf53ec519479dbd51f196bbf78, type: 3}
-  _FinalScore: {fileID: 1130697367}
-  returnToTitleButton: {fileID: 8040275247485277595, guid: da709c847f71106438a980c4269b8ad9, type: 3}
+  _spawner: {fileID: 1750720327}
+  _spawnInfoDB: {fileID: 11400000, guid: 7573105ba342b9b44a96b5e923694ae5, type: 2}
+  _timer: {fileID: 1194056103}
+  _moneyManager: {fileID: 18355682}
+  _congratulations: {fileID: 1897865223932418568, guid: 6c2e0605429278e4c9658689317a3b43, type: 3}
+  _scoreIs: {fileID: 5910780963144784978, guid: 0dd8eddf53ec519479dbd51f196bbf78, type: 3}
+  _finalScore: {fileID: 1130697367}
+  _returnToTitleButton: {fileID: 8040275247485277595, guid: da709c847f71106438a980c4269b8ad9, type: 3}
 --- !u!114 &18355682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5deaa605b4bd3c44b9e2b6211d9e05d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MoneyText: {fileID: 351537079}
+  _moneyText: {fileID: 351537079}
 --- !u!1 &54683634
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1b36d818fae004798a5d89b2a6ed38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MoneyText: {fileID: 351537077}
+  _moneyText: {fileID: 351537077}
 --- !u!1001 &410732777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1751,12 +1751,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871b4a64b4bf2c24ab3cea7c96410b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInfoDB: {fileID: 11400000, guid: 7573105ba342b9b44a96b5e923694ae5, type: 2}
-  landSpawnPoints:
+  _spawnInfoDB: {fileID: 11400000, guid: 7573105ba342b9b44a96b5e923694ae5, type: 2}
+  _landSpawnPoints:
   - {fileID: 143190462}
   - {fileID: 438652143}
-  skySpawnPoints: []
-  spawnIntervalTime: 2
+  _skySpawnPoints: []
+  _spawnIntervalTime: 1
 --- !u!1 &1855771906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,9 +1892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d391d089482234d8b1ebf918ef64c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  durability: 10
-  maxEngageAmount: 10000
+  _hp: 100
+  _durability: 10
+  _maxEngageAmount: 10000
 --- !u!114 &2056252974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,8 +1937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79adfec5cf6217a4bb6a5860fcef6b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverTitle: {fileID: 4468688092113677972, guid: fd3d8f42b7f32764cb5b276da00bc9a4, type: 3}
-  gameOverTitlePosition: {x: 0, y: 3}
+  _gameOverTitle: {fileID: 4468688092113677972, guid: fd3d8f42b7f32764cb5b276da00bc9a4, type: 3}
+  _gameOverTitlePosition: {x: 0, y: 0}
 --- !u!61 &2056252977
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880438c2961a4094b8e4d0d9c493d692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gate: {fileID: 2056252973}
+  _gateBase: {fileID: 2056252973}
 --- !u!4 &4059847051968619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7068783856074142638, guid: fdd605e80d9d30745813536dfab15bff, type: 3}
@@ -2093,15 +2093,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5011993164805642409, guid: 326927474051ff4439deee05b6bf8487, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5011993164805642409, guid: 326927474051ff4439deee05b6bf8487, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5011993164805642409, guid: 326927474051ff4439deee05b6bf8487, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5011993164805642409, guid: 326927474051ff4439deee05b6bf8487, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

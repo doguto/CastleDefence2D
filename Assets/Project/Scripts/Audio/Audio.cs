@@ -31,8 +31,8 @@ public class Audio : Singleton<Audio>
 
     public override void Awake()
     {
-        Instantiate();
         RemoveDuplicates(); //Singleton
+        Instantiate();
 
         //bgmSource.clip = bgmClips[0];
         //bgmSource.Play();

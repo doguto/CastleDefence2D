@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class NormalSoldierSummoner : Summoner, IClicked
 {
+    [SerializeField] float _width;
+
     private void Awake()
     {
         InitialSet();
     }
 
-    protected override void Summon()
+    protected override void InitialSet()
     {
-        Instantiate(summonedObject, summonerTransform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        width = _width;
+        base.InitialSet();
     }
 
     public void OnClicked()

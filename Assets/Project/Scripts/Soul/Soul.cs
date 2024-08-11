@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Soul : MonoBehaviour
 {
-    [SerializeField] Transform _myTransform;
-    [SerializeField] float _ceiling;
+    Transform _myTransform;
+    readonly float _ceiling = 10;
     readonly float _ascendSpeed = 5f;
+
+    private void Awake()
+    {
+        _myTransform = transform;
+    }
+
     private void Update()
     {
         Ascend();

@@ -556,9 +556,9 @@ GameObject:
   - component: {fileID: 4779788358881021832}
   - component: {fileID: 4430530037616672434}
   - component: {fileID: 696332123944507922}
+  - component: {fileID: 8683432390405299593}
   - component: {fileID: 4897997203845376802}
   - component: {fileID: 5878039043614575159}
-  - component: {fileID: 8683432390405299593}
   - component: {fileID: 6018183932230602131}
   m_Layer: 3
   m_Name: Chara_01
@@ -673,10 +673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408c1dbc98e0d904a8c1f8af1e441d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  durability: 10
-  maxEngageAmount: 1
-  initY: -2.3
+  _hp: 100
+  _durability: 5
+  _maxEngageAmount: 1
+  _initY: -2.3
   _cost: 20
 --- !u!114 &4430530037616672434
 MonoBehaviour:
@@ -722,34 +722,6 @@ MonoBehaviour:
   speed: 3
   soldier: {fileID: 4779788358881021832}
   soldierCollision: {fileID: 4897997203845376802}
---- !u!114 &4897997203845376802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2659909249269978010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521dbe218704d9e4bb9dc4ac1e9e2ee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldier: {fileID: 4779788358881021832}
-  allyDamage: {fileID: 4430530037616672434}
---- !u!114 &5878039043614575159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2659909249269978010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4923e6c819afa55498297d9bd8b07f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldier: {fileID: 4779788358881021832}
-  width: 4
 --- !u!114 &8683432390405299593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,9 +736,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 20
   attackInterval: 1
+  _soldier: {fileID: 4779788358881021832}
+  _slashRotateAdd: {x: 0, y: 0, z: 10}
+  _slashedDerayTime: 0.1
+--- !u!114 &4897997203845376802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659909249269978010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521dbe218704d9e4bb9dc4ac1e9e2ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   soldier: {fileID: 4779788358881021832}
-  slashRotateAdd: {x: 0, y: 0, z: 5}
-  slashedDerayTime: 0.1
+  _allyDamage: {fileID: 4430530037616672434}
+--- !u!114 &5878039043614575159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659909249269978010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4923e6c819afa55498297d9bd8b07f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldier: {fileID: 4779788358881021832}
+  width: 4
 --- !u!114 &6018183932230602131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,8 +779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984809bdbec4a8341a515765a1d1e49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldier: {fileID: 4779788358881021832}
-  soul: {fileID: 184587849103943775, guid: d6159e8e5a83d404498b0e7350fddf1e, type: 3}
+  _soldier: {fileID: 4779788358881021832}
+  _soul: {fileID: 184587849103943775, guid: d6159e8e5a83d404498b0e7350fddf1e, type: 3}
 --- !u!1 &3881591792990117472
 GameObject:
   m_ObjectHideFlags: 0

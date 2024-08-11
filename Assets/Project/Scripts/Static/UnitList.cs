@@ -71,7 +71,7 @@ public class UnitList : MonoBehaviour
         foreach (Enemy enemy in _enemies)
         {
             Vector2 enemyPosition = enemy.transform.position;
-            if (!IsIn.Vector1Range(centerPosition.x - width, centerPosition.x + width, enemy.transform.position.x))
+            if (!IsIn.Vector1Range(centerPosition.x - width/2, centerPosition.x + width/2, enemy.transform.position.x))
             {
                 continue;
             }

@@ -99,6 +99,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce900abd4b90f24c84af0eeac8fb6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myTransform: {fileID: 4953243799878202247}
-  ceiling: 10
-  speed: 5
+  _myTransform: {fileID: 0}
+  _ceiling: 10
