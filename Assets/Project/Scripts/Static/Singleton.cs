@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : Component
@@ -28,25 +29,36 @@ public class Singleton<T> : MonoBehaviour where T : Component
     private static void SetupInstance()
     {
         _instance = FindFirstObjectByType(typeof(T)) as T;
-        if (_instance == null)
+
+        if (_instance)
         {
-            GameObject gameObj = new GameObject();
-            gameObj.name = typeof(T).Name;
-            _instance = gameObj.AddComponent<T>();
-            DontDestroyOnLoad(gameObj);
+            Destroy( _instance );
         }
+
+        //GameObject gameObj = new GameObject();
+        //gameObj.name = typeof(T).Name;
+        //_instance = gameObj.AddComponent<T>();
     }
 
     public void RemoveDuplicates()
     {
-        if (_instance == null)
+        _instance = FindFirstObjectByType(typeof(T)) as T;
+
+        if (_instance && _instance != gameObject.GetComponent<T>())
         {
-            _instance = this as T;
-            DontDestroyOnLoad(gameObject);
+            Destroy(_instance);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        DontDestroyOnLoad(gameObject);
+
+        //if (_instance == null)
+        //{
+        //    _instance = this as T;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 }
