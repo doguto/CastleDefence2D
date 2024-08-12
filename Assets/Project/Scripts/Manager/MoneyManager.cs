@@ -32,6 +32,11 @@ public class MoneyManager : MonoBehaviour
         _money.UseMoney(cost);
     }
 
+    public void ReturnMoney(int backAmount)
+    {
+        _money.AddMoney(backAmount);
+    }
+
     public void StartMoney()
     {
         _canAddMoney = true;
@@ -52,6 +57,7 @@ public class MoneyManager : MonoBehaviour
     } 
 }
 
+
 class Money
 {
     int _amount = 0;
@@ -60,15 +66,15 @@ class Money
         get { return _amount; }
     }
 
-    readonly int _MinAmount = 0;
-    int _MaxAmount;
+    readonly int _minAmount = 0;
+    int _maxAmount;
     public int MaxAmount
     {
-        get { return _MaxAmount; }
+        get { return _maxAmount; }
         set
         {
             if (value < 0) return;
-            _MaxAmount = value; 
+            _maxAmount = value; 
         }
     }
 
@@ -79,9 +85,9 @@ class Money
 
     public void AddMoney(int addAmount)
     {
-        if (_amount + addAmount > _MaxAmount)
+        if (_amount + addAmount > _maxAmount)
         {
-            _amount = _MaxAmount;
+            _amount = _maxAmount;
             return;
         }
         _amount += addAmount;
@@ -89,7 +95,7 @@ class Money
 
     public void UseMoney(int useAmount)
     {
-        if (_amount - useAmount < _MinAmount)
+        if (_amount - useAmount < _minAmount)
         {
             return;
         }

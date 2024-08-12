@@ -8,6 +8,11 @@ public abstract class Summoner : MonoBehaviour
     [SerializeField] protected GameObject summonedObject;
     [SerializeField] protected GameObject activeRange;
     protected GameObject instantiatedActiveRange;
+    protected SummonButtom summonButtom;
+    public SummonButtom SummonButtom 
+    {
+        set { summonButtom = value; }
+    }
 
     protected Transform summonerTransform;
     [SerializeField] protected SpriteRenderer[] spriteRenderer;

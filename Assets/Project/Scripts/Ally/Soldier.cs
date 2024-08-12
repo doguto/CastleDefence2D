@@ -62,15 +62,15 @@ public class Soldier : AllyBase
 
     void Init()
     {
-        MoneyManager moneyManager = GameObject.Find("BattleManager").GetComponent<MoneyManager>();
-        if (!moneyManager.CanPurchase(_cost))
-        {
-            Destroy(this.gameObject);
-        }
+        //MoneyManager moneyManager = GameObject.Find("BattleManager").GetComponent<MoneyManager>();
+        //if (!moneyManager.CanPurchase(_cost))
+        //{
+        //    Destroy(this.gameObject);
+        //}
 
-        moneyManager.Purchase(_cost);
+        //moneyManager.Purchase(_cost);
         UnitList.AddUnit<Soldier>(this);
-        Transform myTransform = this.gameObject.transform;
+        Transform myTransform = transform;
         Vector2 initPosition = new Vector2(myTransform.position.x, _initY);
         myTransform.position = initPosition;
     }

@@ -41,7 +41,6 @@ public class Audio : Singleton<Audio>
 
     private void Instantiate()
     {
-        Debug.Log(_seSource);
         audioMixer = _audioMixer;
         bgmSource = _bgmSource;
         seSource = _seSource;
