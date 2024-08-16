@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Soul : MonoBehaviour
 {
-    [SerializeField] Transform myTransform;
-    [SerializeField] float ceiling;
-    readonly float ascendSpeed = 5f;
+    Transform _myTransform;
+    readonly float _ceiling = 10;
+    readonly float _ascendSpeed = 5f;
+
+    private void Awake()
+    {
+        _myTransform = transform;
+    }
+
     private void Update()
     {
         Ascend();
@@ -14,11 +20,11 @@ public class Soul : MonoBehaviour
 
     private void Ascend()
     {
-        Vector3 nextPosition = myTransform.position;
-        nextPosition.y += ascendSpeed * Time.deltaTime;
-        myTransform.position = nextPosition;
+        Vector3 nextPosition = _myTransform.position;
+        nextPosition.y += _ascendSpeed * Time.deltaTime;
+        _myTransform.position = nextPosition;
 
-        if (myTransform.position.y >= ceiling)
+        if (_myTransform.position.y >= _ceiling)
         {
             Destroy(this.gameObject);
         }

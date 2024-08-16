@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class TargetEnemies : MonoBehaviour
 {
-    [SerializeField] List<Enemy> targetEnemies;
+    [SerializeField] List<Enemy> _targetEnemies;
 
     
     public void AddTarget(Enemy enemy)
     {
         if (!enemy) return;
 
-        targetEnemies.Add(enemy);
+        _targetEnemies.Add(enemy);
     }
 
     public void DestroyTarget(Enemy enemy)
     {
         if (!enemy) return;
-        if (!targetEnemies.Contains(enemy)) return;
+        if (!_targetEnemies.Contains(enemy)) return;
 
-        targetEnemies.Remove(enemy);
+        _targetEnemies.Remove(enemy);
     }
 
     public bool ContainTarget(Enemy enemy)
     {
         if (!enemy) return false;
 
-        if (targetEnemies.Contains(enemy)) return true;
+        if (_targetEnemies.Contains(enemy)) return true;
         return false;
     }
 
@@ -34,7 +34,7 @@ public class TargetEnemies : MonoBehaviour
     {
         Enemy targetEnemy = null;
         float minX = 100; //100:‚½‚¾‚Ì‘å‚«‚¢”
-        foreach (Enemy enemy in targetEnemies)
+        foreach (Enemy enemy in _targetEnemies)
         {
             Vector2 enemyPosition = enemy.transform.position;
             if (!(centerPosition.x - width < enemyPosition.x && enemyPosition.x < centerPosition.x + width)) continue;

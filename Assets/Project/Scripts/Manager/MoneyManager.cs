@@ -4,53 +4,59 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    [SerializeField] MoneyText _MoneyText;
+    [SerializeField] MoneyText _moneyText;
 
-    Money _Money;
-    int _AddAmountPerDS = 1; //deciSecond–ˆ‚ÌMoney‘‰Á—Ê
+    Money _money;
+    int _addAmountPerDS = 1; //deciSecond–ˆ‚ÌMoney‘‰Á—Ê
 
-    WaitForSeconds _AddMoneyDeray;
-    readonly float _DerayTime = 0.1f;
+    WaitForSeconds _addMoneyDeray;
+    readonly float _derayTime = 0.1f;
 
-    bool _CanAddMoney = false;
+    bool _canAddMoney = false;
 
     private void Awake()
     {
-        _Money = new Money();
-        _AddMoneyDeray = new WaitForSeconds(_DerayTime);
+        _money = new Money();
+        _addMoneyDeray = new WaitForSeconds(_derayTime);
 
-        _Money.MaxAmount = 300;
+        _money.MaxAmount = 300;
     }
 
     public bool CanPurchase(int cost)
     {
-        return _Money.Amount >= cost;
+        return _money.Amount >= cost;
     }
 
     public void Purchase(int cost)
     {
-        _Money.UseMoney(cost);
+        _money.UseMoney(cost);
+    }
+
+    public void ReturnMoney(int backAmount)
+    {
+        _money.AddMoney(backAmount);
     }
 
     public void StartMoney()
     {
-        _CanAddMoney = true;
+        _canAddMoney = true;
         StartCoroutine(AddMoneyCoroutine());
     }
 
     IEnumerator AddMoneyCoroutine()
     {
-        _Money.AddMoney(_AddAmountPerDS);
-        _MoneyText.DesplayMoney(_Money.Amount, _Money.MaxAmount);
+        _money.AddMoney(_addAmountPerDS);
+        _moneyText.DesplayMoney(_money.Amount, _money.MaxAmount);
 
-        yield return _AddMoneyDeray;
+        yield return _addMoneyDeray;
         
-        if (_CanAddMoney)
+        if (_canAddMoney)
         {
             StartCoroutine(AddMoneyCoroutine());
         }
     } 
 }
+
 
 class Money
 {
@@ -60,15 +66,15 @@ class Money
         get { return _amount; }
     }
 
-    readonly int _MinAmount = 0;
-    int _MaxAmount;
+    readonly int _minAmount = 0;
+    int _maxAmount;
     public int MaxAmount
     {
-        get { return _MaxAmount; }
+        get { return _maxAmount; }
         set
         {
             if (value < 0) return;
-            _MaxAmount = value; 
+            _maxAmount = value; 
         }
     }
 
@@ -79,9 +85,9 @@ class Money
 
     public void AddMoney(int addAmount)
     {
-        if (_amount + addAmount > _MaxAmount)
+        if (_amount + addAmount > _maxAmount)
         {
-            _amount = _MaxAmount;
+            _amount = _maxAmount;
             return;
         }
         _amount += addAmount;
@@ -89,7 +95,7 @@ class Money
 
     public void UseMoney(int useAmount)
     {
-        if (_amount - useAmount < _MinAmount)
+        if (_amount - useAmount < _minAmount)
         {
             return;
         }

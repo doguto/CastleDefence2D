@@ -5,30 +5,30 @@ using UnityEngine;
 
 public class UnitList : MonoBehaviour
 {
-    private static List<Enemy> enemies = new List<Enemy>();
-    private static List<Soldier> soldiers = new List<Soldier>();
-    [SerializeField] Gate _gate;
-    private static Gate gate;
+    private static List<Enemy> _enemies = new List<Enemy>();
+    private static List<Soldier> _soldiers = new List<Soldier>();
+    [SerializeField] Gate _gateBase;
+    private static Gate _gate;
  
     public void Awake()
     {
         //RemoveDuplicates(); //Singleton
 
-        enemies.Clear();
-        soldiers.Clear();
+        _enemies.Clear();
+        _soldiers.Clear();
 
-        gate = _gate;
+        _gate = _gateBase;
     }
 
     public static void AddUnit<T>(T unit)
     {
         if (unit is Enemy)
         {
-            enemies.Add(unit as Enemy);
+            _enemies.Add(unit as Enemy);
         }
         else if (unit is Soldier)
         {
-            soldiers.Add(unit as Soldier);
+            _soldiers.Add(unit as Soldier);
         }
     }
 
@@ -36,11 +36,11 @@ public class UnitList : MonoBehaviour
     {
         if (unit is Enemy)
         {
-            enemies.Remove(unit as Enemy);
+            _enemies.Remove(unit as Enemy);
         }
         else if (unit is Soldier)
         {
-            soldiers.Remove(unit as Soldier);
+            _soldiers.Remove(unit as Soldier);
         }
     }
 
@@ -48,11 +48,11 @@ public class UnitList : MonoBehaviour
     {
         if (unit is Enemy)
         {
-            return enemies.Contains(unit as Enemy);
+            return _enemies.Contains(unit as Enemy);
         }
         else if (unit is Soldier)
         {
-            return soldiers.Contains(unit as Soldier);
+            return _soldiers.Contains(unit as Soldier);
         }
         return false;
     }
@@ -61,17 +61,17 @@ public class UnitList : MonoBehaviour
     {
         int rank = 0;
         //float minX = 100; //100:ÇΩÇæÇÃëÂÇ´Ç¢êî.ì¡Ç…à”ñ°ÇÕñ≥Ç¢.
-        if (enemies.Count == 0)
+        if (_enemies.Count == 0)
         {
             return null;
         }
 
-        Enemy[] targetCandidats = new Enemy[enemies.Count];
+        Enemy[] targetCandidats = new Enemy[_enemies.Count];
 
-        foreach (Enemy enemy in enemies)
+        foreach (Enemy enemy in _enemies)
         {
             Vector2 enemyPosition = enemy.transform.position;
-            if (!IsIn.Vector1Range(centerPosition.x - width, centerPosition.x + width, enemy.transform.position.x))
+            if (!IsIn.Vector1Range(centerPosition.x - width/2, centerPosition.x + width/2, enemy.transform.position.x))
             {
                 continue;
             }
@@ -120,14 +120,14 @@ public class UnitList : MonoBehaviour
 
     public static AllyBase GetTargetAlly(Transform enemyTransform)
     {
-        if (soldiers == null) return gate;
+        if (_soldiers == null) return _gate;
 
         AllyBase target = null;
         float tempDistance = 0;
         float finalDistance = 0;
         float minDistance = 0;
 
-        foreach (Soldier robot in soldiers)
+        foreach (Soldier robot in _soldiers)
         {
             tempDistance = (enemyTransform.position - robot.transform.position).sqrMagnitude;
             if (minDistance == 0)
@@ -143,20 +143,20 @@ public class UnitList : MonoBehaviour
                 target = robot;
             }
         }
-        finalDistance = (enemyTransform.position - gate.transform.position).sqrMagnitude;
+        finalDistance = (enemyTransform.position - _gate.transform.position).sqrMagnitude;
 
         if (finalDistance < minDistance)
-            target = gate;
+            target = _gate;
 
         if (target == null)
-            target = gate;
+            target = _gate;
 
         return target;
     }
 
     public static void HideSoldiers()
     {
-        foreach (Soldier soldier in soldiers)
+        foreach (Soldier soldier in _soldiers)
         {
             if (!soldier) continue;
 
@@ -166,6 +166,6 @@ public class UnitList : MonoBehaviour
 
     public static Gate SetGate()
     {
-        return gate;
+        return _gate;
     }
 }

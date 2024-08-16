@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CastleDeath : AllyDeathBase
 {
-    [SerializeField] GameObject gameOverTitle;
-    [SerializeField] Vector2 gameOverTitlePosition;
-    bool isDead = false;
+    [SerializeField] GameObject _gameOverTitle;
+    [SerializeField] Vector2 _gameOverTitlePosition;
+    bool _isDead = false;
 
     public override void CallDeath()
     {
@@ -16,11 +16,11 @@ public class CastleDeath : AllyDeathBase
 
     protected override void Die()
     {
-        if (isDead) return;
+        if (_isDead) return;
 
-        isDead = true;
+        _isDead = true;
         BreakDownEffect(); 
-        Instantiate(gameOverTitle, gameOverTitlePosition, Quaternion.identity);
+        Instantiate(_gameOverTitle, _gameOverTitlePosition, Quaternion.identity);
     }
 
     void BreakDownEffect()

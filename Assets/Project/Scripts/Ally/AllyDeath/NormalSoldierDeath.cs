@@ -5,15 +5,15 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class NormalSoldierDeath : AllyDeathBase
 {
-    [SerializeField] Soldier soldier;
-    [SerializeField] GameObject soul;
+    [SerializeField] Soldier _soldier;
+    [SerializeField] GameObject _soul;
 
 
     public override void CallDeath()
     {
-        soldier.CanAttack = false;
-        soldier.CanDamaged = false;
-        soldier.CanMove = false;
+        _soldier.CanAttack = false;
+        _soldier.CanDamaged = false;
+        _soldier.CanMove = false;
         this.gameObject.tag = deadTag;
 
         Die();
@@ -21,8 +21,8 @@ public class NormalSoldierDeath : AllyDeathBase
 
     protected override void Die()
     {
-        Instantiate(soul,myTransform.position,Quaternion.identity);
-        UnitList.RemoveUnit<Soldier>(soldier);
+        Instantiate(_soul,myTransform.position,Quaternion.identity);
+        UnitList.RemoveUnit<Soldier>(_soldier);
         Destroy(this.gameObject);
     }
 }

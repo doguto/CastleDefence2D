@@ -5,7 +5,7 @@ using UnityEngine;
 public class LandEnemyMove_Pre : EnemyMoveBase //Not use
 {
     //[SerializeField] TargetSetter_Normal targetSetter;
-    AllyBase tempTarget;
+    AllyBase _tempTarget;
 
     private void Awake()
     {
@@ -23,17 +23,17 @@ public class LandEnemyMove_Pre : EnemyMoveBase //Not use
         if (enemy.IsEngage) return;
 
         nextPosition = myTransform.position;
-        tempTarget = UnitList.GetTargetAlly(myTransform);
-        if (myTransform.position.x - tempTarget.transform.position.x > 0)
+        _tempTarget = UnitList.GetTargetAlly(myTransform);
+        if (myTransform.position.x - _tempTarget.transform.position.x > 0)
         {
             nextPosition.x -= speed * Time.deltaTime;
-            if (nextPosition.x < tempTarget.transform.position.x) return;
+            if (nextPosition.x < _tempTarget.transform.position.x) return;
             nextEulerAngle = leftEulerAngle;
         }
         else
         {
             nextPosition.x += speed * Time.deltaTime;
-            if (nextPosition.x > tempTarget.transform.position.x) return;
+            if (nextPosition.x > _tempTarget.transform.position.x) return;
             nextEulerAngle = rightEulerAngle;
         }
 

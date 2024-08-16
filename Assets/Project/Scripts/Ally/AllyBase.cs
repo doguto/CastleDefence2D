@@ -4,47 +4,47 @@ using UnityEngine;
 
 public class AllyBase : MonoBehaviour
 {
-    [SerializeField] int hp;
+    [SerializeField] int _hp;
     public int Hp
     {
-        get { return hp; }
+        get { return _hp; }
         set
         {
             if (value < 0) return;
 
-            hp = value;
+            _hp = value;
         }
     }
 
-    [SerializeField] int durability;
+    [SerializeField] int _durability;
     public int Durability
     {
-        get { return durability; }
+        get { return _durability; }
     }
 
-    bool canDamaged = true;
+    bool _canDamaged = true;
     public bool CanDamaged
     {
-        get { return canDamaged; }
-        set { canDamaged = value; }
+        get { return _canDamaged; }
+        set { _canDamaged = value; }
     }
 
-    bool canAttack;
+    bool _canAttack;
     public bool CanAttack
     {
-        get { return canAttack; }
-        set { canAttack = value; }
+        get { return _canAttack; }
+        set { _canAttack = value; }
     }
 
-    [SerializeField] int maxEngageAmount;
-    int engageingAmount;
+    [SerializeField] int _maxEngageAmount;
+    int _engageingAmount;
     public int EngagingAmount
     {
-        get { return engageingAmount; }
-        set { engageingAmount = value; }
+        get { return _engageingAmount; }
+        set { _engageingAmount = value; }
     }
     public bool IsFullEngage
     {
-        get { return (engageingAmount == maxEngageAmount); }
+        get { return (_engageingAmount == _maxEngageAmount); }
     }
 }

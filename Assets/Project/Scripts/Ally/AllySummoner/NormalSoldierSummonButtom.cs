@@ -6,6 +6,6 @@ public class NormalSoldierSummonButtom : SummonButtom, IClicked
 {
     public void OnClicked()
     {
-        Instantiate(summoner);
+        CallSummoner();
     }
 }

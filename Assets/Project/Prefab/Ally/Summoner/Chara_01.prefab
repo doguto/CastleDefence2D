@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summonedObject: {fileID: 2659909249269978010, guid: b8dc1efa97b9fce4aaaf548009662092, type: 3}
-  summonerTransform: {fileID: 4868515331449996}
+  activeRange: {fileID: 4231046232223180022, guid: 9775ecf565bd0c641a74b22d016c1a9e, type: 3}
   spriteRenderer:
   - {fileID: 212575805357700498}
   - {fileID: 212200432358254422}
@@ -1109,9 +1109,7 @@ MonoBehaviour:
   - {fileID: 212761384086918042}
   - {fileID: 212897831829274440}
   - {fileID: 212726322007613244}
-  mouseZPosition: 10
-  TopRightLimit: {x: 10, y: 4}
-  BottomLeftLimit: {x: -10, y: -8}
+  _width: 4
 --- !u!50 &-8637569034343259724
 Rigidbody2D:
   serializedVersion: 4

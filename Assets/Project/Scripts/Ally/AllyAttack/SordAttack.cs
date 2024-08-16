@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SordAttack : AllyAttack
 {
-    [SerializeField] Soldier soldier;
-    Transform soldierTransform;
-    [SerializeField] Vector3 slashRotateAdd;
-    [SerializeField] float slashedDerayTime = 0.1f;
-    WaitForSeconds slashedDeray;
+    [SerializeField] Soldier _soldier;
+    Transform _soldierTransform;
+    [SerializeField] Vector3 _slashRotateAdd;
+    [SerializeField] float _slashedDerayTime = 0.1f;
+    WaitForSeconds _slashedDeray;
     readonly string _slashSEKey = "Slash";
 
     private void Awake()
     {
         attackDeray = new WaitForSeconds(attackInterval);
-        slashedDeray = new WaitForSeconds(slashedDerayTime);
-        soldier.CanAttack = true;
-        soldierTransform = transform;
+        _slashedDeray = new WaitForSeconds(_slashedDerayTime);
+        _soldier.CanAttack = true;
+        _soldierTransform = transform;
     }
 
     private void Update()
@@ -27,41 +27,41 @@ public class SordAttack : AllyAttack
     protected override void Attack()
     {
 
-        if (!soldier.CanAttack) return;
-        if (!soldier.IsEngage) return;
-        if (!soldier.EngagingEnemy)
+        if (!_soldier.CanAttack) return;
+        if (!_soldier.IsEngage) return;
+        if (!_soldier.EngagingEnemy)
         {
-            soldier.IsEngage = false;
-            soldier.CanMove = true;
+            _soldier.IsEngage = false;
+            _soldier.CanMove = true;
             return;
         }
-        if (!soldier.EngagingEnemyDamage)
+        if (!_soldier.EngagingEnemyDamage)
         {
-            soldier.IsEngage = false;
-            soldier.CanMove = true;
+            _soldier.IsEngage = false;
+            _soldier.CanMove = true;
             return;
         }
 
-        soldier.CanAttack = false;
+        _soldier.CanAttack = false;
         StartCoroutine(Slach());
     }
 
     protected override IEnumerator AttackWait()
     {
         yield return attackDeray;
-        soldier.CanAttack = true;
+        _soldier.CanAttack = true;
     }
 
     IEnumerator Slach()
     {
         Audio.SEPlayOneShot(_slashSEKey);
-        Vector3 preRotation = soldierTransform.eulerAngles;
-        soldierTransform.eulerAngles = SlashRotate(preRotation);
-        soldier.EngagingEnemyDamage.CallDamaged(power);
+        Vector3 preRotation = _soldierTransform.eulerAngles;
+        _soldierTransform.eulerAngles = SlashRotate(preRotation);
+        _soldier.EngagingEnemyDamage.CallDamaged(power);
 
-        yield return slashedDeray;
+        yield return _slashedDeray;
 
-        soldierTransform.eulerAngles = preRotation;
+        _soldierTransform.eulerAngles = preRotation;
         StartCoroutine(AttackWait());
     }
 
@@ -70,11 +70,11 @@ public class SordAttack : AllyAttack
 
     Vector3 SlashRotate(Vector3 preRotation)
     {
-        if (soldierTransform.localEulerAngles.y == 0)
+        if (_soldierTransform.localEulerAngles.y == 0)
         {
-            return preRotation - slashRotateAdd;
+            return preRotation - _slashRotateAdd;
         }
-        return preRotation + slashRotateAdd;
+        return preRotation + _slashRotateAdd;
     }
 }
 

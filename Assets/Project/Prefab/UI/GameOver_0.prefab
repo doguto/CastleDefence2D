@@ -99,6 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3165e790b988448a043caa387e4c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropSpeed: 2
-  ReturnButton: {fileID: 8040275247485277595, guid: da709c847f71106438a980c4269b8ad9, type: 3}
-  returnButtonPosition: {x: 5, y: -4}
+  _dropSpeed: 1
+  _returnButton: {fileID: 8040275247485277595, guid: da709c847f71106438a980c4269b8ad9, type: 3}
+  _returnButtonPosition: {x: 0, y: 0}

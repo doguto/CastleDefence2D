@@ -1164,10 +1164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408c1dbc98e0d904a8c1f8af1e441d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 200
-  durability: 10
-  maxEngageAmount: 3
-  initY: -1.45
+  _hp: 200
+  _durability: 10
+  _maxEngageAmount: 3
+  _initY: -1.41
   _cost: 40
 --- !u!114 &1109540632268097573
 MonoBehaviour:
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldier: {fileID: 8031164490380453264}
-  allyDamage: {fileID: 3897595423810494052}
+  _allyDamage: {fileID: 3897595423810494052}
 --- !u!114 &3897595423810494052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,8 +1241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984809bdbec4a8341a515765a1d1e49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldier: {fileID: 8031164490380453264}
-  soul: {fileID: 184587849103943775, guid: d6159e8e5a83d404498b0e7350fddf1e, type: 3}
+  _soldier: {fileID: 8031164490380453264}
+  _soul: {fileID: 184587849103943775, guid: d6159e8e5a83d404498b0e7350fddf1e, type: 3}
 --- !u!114 &207500931557561465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1271,9 +1271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 5
   attackInterval: 1
-  soldier: {fileID: 8031164490380453264}
-  slashRotateAdd: {x: 0, y: 0, z: 5}
-  slashedDerayTime: 0.1
+  _soldier: {fileID: 8031164490380453264}
+  _slashRotateAdd: {x: 0, y: 0, z: 10}
+  _slashedDerayTime: 0.1
 --- !u!1 &7976201883764090183
 GameObject:
   m_ObjectHideFlags: 0

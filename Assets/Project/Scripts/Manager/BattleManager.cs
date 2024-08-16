@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] Spawner spawner;
-    [SerializeField] private SpawnInfoDB spawnInfoDB;
-    int waveNumber = 1;
-    float nextSpawnTime = 0;
+    [SerializeField] Spawner _spawner;
+    [SerializeField] private SpawnInfoDB _spawnInfoDB;
+    int _waveNumber = 1;
+    float _nextSpawnTime = 0;
 
-    [SerializeField] Timer _Timer;
-    [SerializeField] MoneyManager _MoneyManager;
+    [SerializeField] Timer _timer;
+    [SerializeField] MoneyManager _moneyManager;
 
-    [SerializeField] GameObject congratulations;
-    [SerializeField] GameObject scoreIs;
-    [SerializeField] FinalScore _FinalScore;
-    [SerializeField] GameObject returnToTitleButton;
-    readonly Vector2 congratulationsEmergePoint = new Vector2(0, 0);
-    readonly Vector2 scoreEmergePosition = new Vector2(-2.5f, -1.5f);
-    readonly Vector2 returnButtonEmergePoint = new Vector2(2, -4.5f);
+    [SerializeField] GameObject _congratulations;
+    [SerializeField] GameObject _scoreIs;
+    [SerializeField] FinalScore _finalScore;
+    [SerializeField] GameObject _returnToTitleButton;
+    readonly Vector2 _congratulationsEmergePoint = new Vector2(0, 0);
+    readonly Vector2 _scoreEmergePosition = new Vector2(-2.5f, -1.5f);
+    readonly Vector2 _returnButtonEmergePoint = new Vector2(2, -4.5f);
 
-    bool isCleared;
+    bool _isCleared;
 
     private void Start()
     {
-        isCleared = false;
+        _isCleared = false;
         StartBattle();
     }
 
@@ -35,43 +35,43 @@ public class BattleManager : MonoBehaviour
 
     void StartBattle()
     {
-        spawner.CallSpawn(waveNumber);
-        nextSpawnTime = 10f;
-        _Timer.InitTimer();
-        _MoneyManager.StartMoney();
+        _spawner.CallSpawn(_waveNumber);
+        _nextSpawnTime = 10f;
+        _timer.InitTimer();
+        _moneyManager.StartMoney();
     }
 
     void CheckSpawn()
     {
-        float currentTime = _Timer.GetCurrentTime();
-        if (currentTime < nextSpawnTime) return;
+        float currentTime = _timer.GetCurrentTime();
+        if (currentTime < _nextSpawnTime) return;
 
         CallSpawn();
     }
 
     void CallSpawn()
     {
-        waveNumber++;
-        if (waveNumber > spawnInfoDB.waveSpawnInfo.Count)
+        _waveNumber++;
+        if (_waveNumber > _spawnInfoDB.waveSpawnInfo.Count)
         {
-            if (isCleared) return;
+            if (_isCleared) return;
             ClearGame();
             return;
         }
 
-        nextSpawnTime += spawnInfoDB.waveSpawnInfo[waveNumber - 1].waveSeconds;
-        spawner.CallSpawn(waveNumber);
+        _nextSpawnTime += _spawnInfoDB.waveSpawnInfo[_waveNumber - 1].waveSeconds;
+        _spawner.CallSpawn(_waveNumber);
     }
 
     void ClearGame()
     {
-        isCleared = true;
-        _Timer.StopTimer();
-        float finTime = _Timer.GetCurrentTime();
-        Instantiate(congratulations, congratulationsEmergePoint, Quaternion.identity);
-        Instantiate(scoreIs, scoreEmergePosition, Quaternion.identity);
-        _FinalScore.DesplayFinalScore(finTime);
-        Instantiate(returnToTitleButton, returnButtonEmergePoint, Quaternion.identity);
+        _isCleared = true;
+        _timer.StopTimer();
+        float finTime = _timer.GetCurrentTime();
+        Instantiate(_congratulations, _congratulationsEmergePoint, Quaternion.identity);
+        Instantiate(_scoreIs, _scoreEmergePosition, Quaternion.identity);
+        _finalScore.DesplayFinalScore(finTime);
+        Instantiate(_returnToTitleButton, _returnButtonEmergePoint, Quaternion.identity);
 
     }
 }

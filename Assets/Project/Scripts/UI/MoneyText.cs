@@ -6,13 +6,13 @@ using TMPro;
 
 public class MoneyText : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _MoneyText;
+    [SerializeField] TextMeshProUGUI _moneyText;
 
     public void DesplayMoney(int currentAmount, int maxAmount)
     {
         //int amount = _MoneyManager.MoneyAmount;
         //int maxAmount = _MoneyManager.MaxMoneyAmount;
-        _MoneyText.text = string.Format("$" + currentAmount + "/$" + maxAmount);
+        _moneyText.text = string.Format("$" + currentAmount + "/$" + maxAmount);
     }
 
 }

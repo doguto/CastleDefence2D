@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalSoldierCollision : SoldierCollision
 {
-    [SerializeField] AllyDamageBase allyDamage;
+    [SerializeField] AllyDamageBase _allyDamage;
 
     protected override void Collision(Collider2D collision)
     {
@@ -31,7 +31,7 @@ public class NormalSoldierCollision : SoldierCollision
 
         enemy.IsEngage = true;
         enemy.EngagingAlly = soldier;
-        enemy.EngagingAllyDamage = allyDamage;
+        enemy.EngagingAllyDamage = _allyDamage;
 
         if (!enemy) return;
 

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LandEnemyMove : EnemyMoveBase
 {
-    AllyBase target;
+    AllyBase _target;
 
     private void Start()
     {
         enemy.CanMove = true;
         enemy.IsEngage = false;
 
-        target = UnitList.SetGate();
+        _target = UnitList.SetGate();
     }
 
     private void Update()
@@ -25,16 +25,16 @@ public class LandEnemyMove : EnemyMoveBase
         if (enemy.IsEngage) return;
 
         nextPosition = myTransform.position;
-        if (myTransform.position.x - target.transform.position.x > 0)
+        if (myTransform.position.x - _target.transform.position.x > 0)
         {
             nextPosition.x -= speed * Time.deltaTime;
-            if (nextPosition.x < target.transform.position.x) return;
+            if (nextPosition.x < _target.transform.position.x) return;
             nextEulerAngle = leftEulerAngle;
         }
         else
         {
             nextPosition.x += speed * Time.deltaTime;
-            if (nextPosition.x > target.transform.position.x) return;
+            if (nextPosition.x > _target.transform.position.x) return;
             nextEulerAngle = rightEulerAngle;
         }
 
