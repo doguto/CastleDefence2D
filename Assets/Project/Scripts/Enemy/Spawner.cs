@@ -7,10 +7,12 @@ public class Spawner : MonoBehaviour
     //[SerializeField] GameObject[] enemiePrefabs; //Enemyˆê——HŠi”[•Ï”
     [SerializeField] SpawnInfoDB _spawnInfoDB; //Spawnî•ñŠi”[ƒf[ƒ^ƒx[ƒX
     List<SpawnInfo> _spawnInfoList;
-    Enemy[] _spawningEnemies; //Spawn‚·‚éEnemyŠi”[—p•Ï”
+    [SerializeField] EnemyDB _enemyDB;
+    List<EnemyInfo> _enemyList;
+    //Enemy[] _spawningEnemies; //Spawn‚·‚éEnemyŠi”[—p•Ï”
 
-    [SerializeField] Transform[] _landSpawnPoints; //SpawnPosition in LandŠi”[•Ï”
-    [SerializeField] Transform[] _skySpawnPoints; //SpawnPosition in SkyŠi”[”z—ñ
+    [SerializeField] Vector2[] _landSpawnPoints; //SpawnPosition in LandŠi”[•Ï”
+    [SerializeField] Vector2[] _skySpawnPoints; //SpawnPosition in SkyŠi”[”z—ñ
     //readonly int enemyKindsInWave = 0;
 
     [SerializeField] float _spawnIntervalTime;
@@ -20,6 +22,7 @@ public class Spawner : MonoBehaviour
     {
         _spawnDeray = new WaitForSeconds(_spawnIntervalTime);
         _spawnInfoList = _spawnInfoDB.waveSpawnInfo;
+        _enemyList = _enemyDB.enemies;
     }
 
     public void CallSpawn(int waveNumber)
@@ -29,20 +32,21 @@ public class Spawner : MonoBehaviour
 
     IEnumerator SpawanCoroutin(int waveNumber)
     {
-        int waveAmount = _spawnInfoList[waveNumber - 1].waveAmount;
+        int waveAmount = _spawnInfoList[waveNumber].waveAmount;
+        int spawnPosition = Random.Range(0, _landSpawnPoints.Length);
+
         for (int i = 0; i < waveAmount; i++)
         {
-            Spawn(waveNumber);
+            Spawn(waveNumber, spawnPosition);
             yield return _spawnDeray;
         }
 
     }
 
-    void Spawn(int waveNumber)
+    void Spawn(int waveNumber, int spawnPosition)
     {
-        int waveEnemyKinds = _spawnInfoList[waveNumber - 1].enemies.Length;
-        int enemyIndex = Random.Range(0, waveEnemyKinds - 1);
-        int tempPoint = Random.Range(0,_landSpawnPoints.Length-1);
-        Instantiate(_spawnInfoList[waveNumber - 1].enemies[enemyIndex], _landSpawnPoints[tempPoint].position, Quaternion.identity);
+        int waveEnemyUpper = _spawnInfoList[waveNumber].enemyUpper;
+        int enemyIndex = Random.Range(0, waveEnemyUpper);
+        Instantiate(_enemyList[enemyIndex].enemy, _landSpawnPoints[spawnPosition], Quaternion.identity);
     }
 }
