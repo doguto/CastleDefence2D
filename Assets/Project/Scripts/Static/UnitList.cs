@@ -102,17 +102,22 @@ public class UnitList : MonoBehaviour
             return null;
         }
 
+        int length = 0;
         for (int i = 0; i < targetCandidats.Length; i++)
         {
             if (targetCandidats[i] == null) break;
+            
+            length++;
+            
             if (!targetCandidats[i].IsEngage) break;
 
             rank++;
         }
 
-        if (targetCandidats.Length - 1 < rank)
+        if (length <= rank)
         {
-            return targetCandidats[targetCandidats.Length - 1];
+            //return targetCandidats[targetCandidats.Length - 1];
+            return targetCandidats[0];
         }
         
         return targetCandidats[rank];

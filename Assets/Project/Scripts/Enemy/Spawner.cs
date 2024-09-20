@@ -49,4 +49,9 @@ public class Spawner : MonoBehaviour
         int enemyIndex = Random.Range(0, waveEnemyUpper);
         Instantiate(_enemyList[enemyIndex].enemy, _landSpawnPoints[spawnPosition], Quaternion.identity);
     }
+
+    void DecideWaveEnemies(int cost)
+    {
+
+    }
 }
