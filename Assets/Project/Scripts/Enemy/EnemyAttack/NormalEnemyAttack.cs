@@ -44,14 +44,14 @@ public class NormalEnemyAttack : EnemyAttack
     {
         if (this.gameObject.activeSelf)
         {
-            Vector3 preRotation = enemyTransform.eulerAngles;
+            Vector3 preRotation = enemyTransform.localEulerAngles;
             Vector3 postRotation = preRotation + _attackRotation;
-            enemyTransform.eulerAngles = postRotation;
+            enemyTransform.localEulerAngles = postRotation;
             enemy.EngagingAllyDamage.CallDamaged(power);
 
             yield return _attackingDeray;
 
-            enemyTransform.eulerAngles = preRotation;
+            enemyTransform.localEulerAngles = preRotation;
             StartCoroutine(AttackWait());
         }
     }

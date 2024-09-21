@@ -56,25 +56,13 @@ public class SordAttack : AllyAttack
     {
         Audio.SEPlayOneShot(_slashSEKey);
         Vector3 preRotation = _soldierTransform.eulerAngles;
-        _soldierTransform.eulerAngles = SlashRotate(preRotation);
+        _soldierTransform.eulerAngles = preRotation + _slashRotateAdd;
         _soldier.EngagingEnemyDamage.CallDamaged(power);
 
         yield return _slashedDeray;
 
         _soldierTransform.eulerAngles = preRotation;
         StartCoroutine(AttackWait());
-    }
-
-
-    //HelperMethod
-
-    Vector3 SlashRotate(Vector3 preRotation)
-    {
-        if (_soldierTransform.localEulerAngles.y == 0)
-        {
-            return preRotation - _slashRotateAdd;
-        }
-        return preRotation + _slashRotateAdd;
     }
 }
 
