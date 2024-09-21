@@ -9,11 +9,11 @@ public class UnitList : MonoBehaviour
     private static List<Soldier> _soldiers = new List<Soldier>();
     [SerializeField] Gate _gateBase;
     private static Gate _gate;
+
+    private readonly static float _castleX = -1.467437f;
  
     public void Awake()
     {
-        //RemoveDuplicates(); //Singleton
-
         _enemies.Clear();
         _soldiers.Clear();
 
@@ -66,6 +66,8 @@ public class UnitList : MonoBehaviour
             return null;
         }
 
+        bool isRightSoldier = centerPosition.x > _castleX;
+
         Enemy[] targetCandidats = new Enemy[_enemies.Count];
 
         foreach (Enemy enemy in _enemies)
@@ -83,8 +85,8 @@ public class UnitList : MonoBehaviour
                     targetCandidats[i] = enemy;
                     break;
                 }
-
-                if (targetCandidats[i].transform.position.x < enemyPosition.x)
+                
+                if (!((targetCandidats[i].transform.position.x < enemyPosition.x) ^ isRightSoldier))
                 {
                     continue;
                 }
@@ -101,7 +103,6 @@ public class UnitList : MonoBehaviour
         {
             return null;
         }
-
         int length = 0;
         for (int i = 0; i < targetCandidats.Length; i++)
         {
@@ -116,7 +117,6 @@ public class UnitList : MonoBehaviour
 
         if (length <= rank)
         {
-            //return targetCandidats[targetCandidats.Length - 1];
             return targetCandidats[0];
         }
         

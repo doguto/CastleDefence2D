@@ -87,10 +87,22 @@ public class Enemy : MonoBehaviour
             _isEngage = value;
         }
     }
-
+    
     private void Awake()
     {
-        UnitList.AddUnit<Enemy>(this);
         _myTransform = transform;
+        UnitList.AddUnit<Enemy>(this);
     }
+
+    /**
+     *  This Start() is for a Test Mode.
+     *  In other time, please comment out this function, 
+     * and please uncomment out Awake() function.
+     */
+    /*
+    private void Start()
+    {
+        _myTransform = transform;
+        UnitList.AddUnit<Enemy>(this);
+    }*/
 }
