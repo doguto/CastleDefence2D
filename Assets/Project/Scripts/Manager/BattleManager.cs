@@ -6,7 +6,7 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] Spawner _spawner;
     [SerializeField] private SpawnInfoDB _spawnInfoDB;
-    int _waveNumber = 1;
+    int _waveNumber = 0;
     float _nextSpawnTime = 0;
 
     [SerializeField] Timer _timer;
@@ -52,14 +52,15 @@ public class BattleManager : MonoBehaviour
     void CallSpawn()
     {
         _waveNumber++;
-        if (_waveNumber > _spawnInfoDB.waveSpawnInfo.Count)
+        if (_waveNumber > _spawnInfoDB.waveSpawnInfo.Count - 1)
         {
             if (_isCleared) return;
+
             ClearGame();
             return;
         }
 
-        _nextSpawnTime += _spawnInfoDB.waveSpawnInfo[_waveNumber - 1].waveSeconds;
+        _nextSpawnTime += _spawnInfoDB.waveSpawnInfo[_waveNumber].waveSeconds;
         _spawner.CallSpawn(_waveNumber);
     }
 

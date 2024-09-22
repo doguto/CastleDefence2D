@@ -7,6 +7,7 @@ using UnityEngine;
 public class SpawnInfo
 {
     public int waveAmount;
-    public GameObject[] enemies;
     public float waveSeconds;
+    public int enemyUpper;
+    public int cost;
 }

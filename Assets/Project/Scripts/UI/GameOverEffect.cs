@@ -9,7 +9,7 @@ public class GameOverEffect : MonoBehaviour
     [SerializeField] float _dropSpeed;
     [SerializeField] GameObject _returnButton;
     readonly float _targetYPosition = -1;
-    [SerializeField] Vector2 _returnButtonPosition;
+    readonly Vector2 _returnButtonPosition = new Vector2(2, -4.5f);
     Transform _myTransform;
 
     bool _emerged;

@@ -14,18 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveSpawnInfo:
   - waveAmount: 1
-    enemies:
-    - {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
     waveSeconds: 10
+    enemyUpper: 0
   - waveAmount: 3
-    enemies:
-    - {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
     waveSeconds: 20
+    enemyUpper: 0
   - waveAmount: 5
-    enemies:
-    - {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
-    waveSeconds: 30
+    waveSeconds: 20
+    enemyUpper: 0
   - waveAmount: 5
-    enemies:
-    - {fileID: 5263025888069338483, guid: 93eed20e51bcdcc4cac57fbe758beda9, type: 3}
-    waveSeconds: 30
+    waveSeconds: 20
+    enemyUpper: 0
